@@ -28,7 +28,7 @@ CREATE TABLE participantes(
   cedula int(9) NOT NULL,
   correo VARCHAR(30),
   direccion VARCHAR(50),
-  FULLTEXT KEY searchp(nombre, apellido, correo, direccion)
+  FULLTEXT KEY searchparticipantes(nombre, apellido, correo, direccion)
 );
 
 CREATE TABLE intructores(

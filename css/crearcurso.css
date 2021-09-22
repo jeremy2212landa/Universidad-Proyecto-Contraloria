@@ -1,0 +1,44 @@
+/*@import url("navigator.css");*/
+
+.principal {
+  margin: 15px 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+.curso_tit {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .7);
+  grid-column: 1 / 3;
+}
+.instruct {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .7);
+  grid-column: 3 / 4;
+}
+
+table {
+  margin: auto;
+}
+
+table, tr, td{
+  border: solid #000 2px;
+}
+.topp {
+  margin: 0px 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.boton1, .boton2{
+  margin: 25px;
+  width: 150px;
+  height: 45px;
+  background-color: green;
+}
+
+.boton1 h2, .boton2 h2{
+  margin: auto;
+  text-align: center;
+}

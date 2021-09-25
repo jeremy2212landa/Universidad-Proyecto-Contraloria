@@ -1,6 +1,4 @@
 <?php
- require_once('Model.php');
-
 class InstructorModel extends Model {
 	public $instructor_ci;
 	public $instructor;

@@ -1,6 +1,4 @@
 <?php
- require_once('Model.php');
-
 class CursosModel extends Model {
 	public $cursos_id;
 	public $cursos;

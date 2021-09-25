@@ -10,7 +10,7 @@
   }
 
   body {
-    background: url(../img/fd.jpg);
+    background: url(./img/fd.jpg);
       background-size: cover;
       background-attachment: fixed;
       font-family: Roboto;
@@ -97,13 +97,16 @@
     padding:auto;
     color: white;
   }
-  /*---Fin de la Barra---*
+  *{
+    color: black;
+  }
+  /*---Fin de la Barra---*/
 </style>
 
 <!-- Inicio de la Barra de navegacion -->
 <nav>
-  <a href="home.php">
-    <div class="icon"><img src="../img/CEBM.png"></img></div>
+  <a href='./'>
+    <div class="icon"><img src="./img/CEBM.png"></img></div>
   </a>
 
   <form class="busqueda" action="search.php">

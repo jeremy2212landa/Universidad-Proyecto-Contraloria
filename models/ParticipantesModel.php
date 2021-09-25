@@ -1,6 +1,4 @@
 <?php
- require_once('Model.php');
-
 class ParticipantesModel extends Model {
 	public $participantes_ci;
 	public $participantes;

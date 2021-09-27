@@ -109,12 +109,12 @@
     <div class="icon"><img src="./img/CEBM.png"></img></div>
   </a>
 
-  <form class="busqueda" action="search.php">
+  <form class="busqueda" action="./?r=search">
     <input type="search" name="search" placeholder="Busqueda" id="separer"></input>
     <input type="submit" name="buscar" id="separador_buscar" value="buscar"></input>
   </form>
-  <a class="administrador opciones" href="administracion.php">
-    <div ><span>Usuario_admin</span><!--<a href="../administracion y ayuda/index.html">Usuario_admin</a>--></div>
-  </a>
+  <a href="./?r=cursos">Cursos</a>
+  <a href="./?r=users">Users</a>
+  <a href="./?r=salir">Salir</a>
 </nav>
 <!-- Fin de la Barra de navegacion -->

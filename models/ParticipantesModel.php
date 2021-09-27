@@ -9,14 +9,14 @@ class ParticipantesModel extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "INSERT INTO participante ('clave_p', 'cedula', 'nombre', 'apellido', 'correo', 'direccion') VALUES ('$clave_participante', '$cedula_participante', '$nombre_participante', '$apellido_participante', '$correo_participante' , '$direccion_participante')";
+		$this->query = "INSERT INTO participantes ('participante_id', 'nombre', 'apellido', 'cedula', 'correo', 'direccion') VALUES ('$clave_participante', '$nombre_participante', '$apellido_participante', '$cedula_participante', '$correo_participante' , '$direccion_participante')";
 		$this->set_query();
 	}
 
 	public function read( $participantes_cedula = '' ) {
 		$this->query = ($participantes_cedula != '')
-    ?"SELECT * FROM participante WHERE cedula = $participantes_cedula"
-    :"SELECT * FROM participante";
+    ?"SELECT * FROM participantes WHERE cedula = $participantes_cedula"
+    :"SELECT * FROM participantes";
 
 		$this->get_query();
 
@@ -36,12 +36,12 @@ class ParticipantesModel extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "UPDATE participante SET clave_p = $clave_participante, cedula = $cedula_participante, nombre = '$nombre_participante' , apellido = '$apellido_participante' , correo = '$correo_participante' , direccion = '$direccion_participante' WHERE cedula = $cedula_participante";
+		$this->query = "UPDATE participantes SET participante_id = $clave_participante, nombre = '$nombre_participante', apellido = '$apellido_participante' , cedula = $cedula_participante , correo = '$correo_participante' , direccion = '$direccion_participante' WHERE cedula = $cedula_participante";
 		$this->set_query();
 	}
 
 	public function delete( $participantes_cedula = '' ) {
-		$this->query = "DELETE FROM cursos WHERE cedula = $participantes_cedula";
+		$this->query = "DELETE FROM participantes WHERE cedula = $participantes_cedula";
 		$this->set_query();
 	}
 

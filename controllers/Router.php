@@ -22,8 +22,13 @@ class Router {
 			// var_dump($this->route);
 			switch ($this->route) {
 				case 'home':
-					$controller->load_view('home');
+					if ( !isset($_POST['r']) ) $controller->load_view('home');
+					else if( isset($_POST['r']) == 'curso_edit' )  $controller->load_view('curso_edit');
 					break;
+				case 'cursos':
+						if ( !isset($_POST['r']) ) $controller->load_view('cursos');
+						else if( $_POST['r'] == 'curso_edit' )  $controller->load_view('curso_edit');
+						break;
 
 				case 'salir':
 					$user_session = new SessionController();

@@ -9,13 +9,13 @@ class CursosModel extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "INSERT INTO cursos ('id', 'nombre_curso', 'descripcion_curso', 'contralor', 'fecha') VALUES ($curso_id, '$curso_nombre', '$curso_descripcion', '$curso_contralor', '$curso_fecha')";
+		$this->query = "INSERT INTO cursos ('curso_id', 'curso_name', 'curso_description', 'curso_contralor', 'curso_fecha') VALUES ($curso_id, '$curso_nombre', '$curso_descripcion', '$curso_contralor', '$curso_fecha')";
 		$this->set_query();
 	}
 
 	public function read( $cursos_id = '' ) {
 		$this->query = ($cursos_id != '')
-    ?"SELECT * FROM cursos WHERE id = $cursos_id"
+    ?"SELECT * FROM cursos WHERE curso_id = $cursos_id"
     :"SELECT * FROM cursos";
 
 		$this->get_query();
@@ -36,12 +36,12 @@ class CursosModel extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "UPDATE cursos SET id = $curso_id, nombre_curso = '$curso_nombre' , descripcion_curso = '$curso_descripcion' , contralor = '$curso_contralor' , fecha = '$curso_fecha' WHERE id = $curso_id";
+		$this->query = "UPDATE cursos SET curso_id = $curso_id, curso_name = '$curso_nombre' , curso_description = '$curso_descripcion' , curso_contralor = '$curso_contralor' , curso_fecha = '$curso_fecha' WHERE curso_id = $curso_id";
 		$this->set_query();
 	}
 
 	public function delete( $cursos_id = '' ) {
-		$this->query = "DELETE FROM cursos WHERE id = $cursos_id";
+		$this->query = "DELETE FROM cursos WHERE curso_id = $cursos_id";
 		$this->set_query();
 	}
 

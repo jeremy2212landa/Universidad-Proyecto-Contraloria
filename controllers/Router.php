@@ -30,6 +30,13 @@ class Router {
 						else if( $_POST['r'] == 'curso_edit' )  $controller->load_view('curso_edit');
 						break;
 
+				case 'users':
+						if ( !isset($_POST['r']) ) $controller->load_view('users');
+						else if( $_POST['r'] == 'add_user' )  $controller->load_view('add_user');
+						else if( $_POST['r'] == 'edit_user' )  $controller->load_view('edit_user');
+						else if( $_POST['r'] == 'delete_user' )  $controller->load_view('delete_user');
+				break;
+
 				case 'salir':
 					$user_session = new SessionController();
 					$user_session->logout();

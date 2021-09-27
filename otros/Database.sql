@@ -61,3 +61,35 @@ CREATE TABLE curso_instructor(
   FOREIGN KEY (ci_instructor) REFERENCES intructores(instructor_id)
     ON DELETE RESTRICT ON UPDATE CASCADE
 );
+
+#insertando datos para users
+
+INSERT INTO users (user_name, user_email, user_pass, role) VALUES
+    ('jeremy2212', 'jeremy2212landa@gmail.com', MD5('1234'), 'Admin'),
+    ('test', 'test@testing.com', MD5('test'), 'User');
+
+
+
+#insertando datos para cursos
+
+INSERT INTO cursos (curso_name, curso_description, curso_contralor, curso_fecha) values
+    ('curso de prueba1', 'probando la aplicacion con mvc para ver que tan bien o mal está', 'Jeremy Landa', '2021-09-27'),
+    ('Curso de analisis', 'Analizando el estado actual de mi aplicacion web', 'Daniel Muñoz', '2021-09-27'),
+    ('Curso Test', 'Testeando lo que se puede hacer aca en esta vaina', 'Jeremy Landa', '2021-09-27');
+
+
+
+#insertando datos para participantes
+
+INSERT INTO participantes (nombre, apellido, cedula, correo, direccion) VALUES
+    ('Jeremy', 'Landa', 28463395, 'jeremy2212landa@gmail.com', 'programacion'),
+    ('Daniel', 'Muñoz', 28111222, 'danieljaja@hotmail.com', 'analisis'),
+    ('Yusneilit', 'Gomez', 28222333, 'nasyeka@gmail.com', 'recursos humanos'),
+    ('Gerardo', 'Medina', 28333444, 'gerarjos@gmail.com', 'programacion');
+
+
+
+#insertando datos para instructores
+
+INSERT INTO intructores (nombre, apellido, cedula, correo, instituto, cargo) VALUES
+    ('Jorge','Perez','11000000','jorgeisgay@gmail.com','batallagallo','rapero');

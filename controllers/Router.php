@@ -23,8 +23,11 @@ class Router {
 			switch ($this->route) {
 				case 'home':
 					if ( !isset($_POST['r']) ) $controller->load_view('home');
-					else if( isset($_POST['r']) == 'curso_edit' )  $controller->load_view('curso_edit');
+					else if( ($_POST['r']) == 'edit_curso' )  $controller->load_view('edit_curso');
+					else if( ($_POST['r']) == 'delete_curso' )  $controller->load_view('delete_curso');
+					else if( ($_POST['r']) == 'add_curso' )  $controller->load_view('add_curso');
 					break;
+
 				case 'cursos':
 						if ( !isset($_POST['r']) ) $controller->load_view('cursos');
 						else if( $_POST['r'] == 'curso_edit' )  $controller->load_view('curso_edit');

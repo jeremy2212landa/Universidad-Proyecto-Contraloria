@@ -54,9 +54,9 @@
       <tr>
         <td colspan="4">
         <form align="center" method="post">
-          <input type="hidden" name="r" value="imprimir_curso">
+          <input type="hidden" name="r" value="info_curso">
           <input type="hidden" name="c" value="' . $key['curso_id'] . '">
-          <input type="submit" name="imprimir" value="imprimir">
+          <input type="submit" name="informacion" value="Info">
         </form>
         </td>
       </tr>

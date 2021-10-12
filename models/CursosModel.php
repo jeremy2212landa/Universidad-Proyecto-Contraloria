@@ -9,7 +9,7 @@ class CursosModel extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "INSERT INTO cursos ('curso_id', 'curso_name', 'curso_description', 'curso_contralor', 'curso_fecha') VALUES ($curso_id, '$curso_nombre', '$curso_descripcion', '$curso_contralor', '$curso_fecha')";
+		$this->query = "INSERT INTO cursos (curso_id, curso_name, curso_description, curso_contralor, curso_fecha) VALUES ($curso_id, '$curso_nombre', '$curso_descripcion', '$curso_contralor', '$curso_fecha')";
 		$this->set_query();
 	}
 

@@ -93,3 +93,25 @@ INSERT INTO participantes (nombre, apellido, cedula, correo, direccion) VALUES
 
 INSERT INTO intructores (nombre, apellido, cedula, correo, instituto, cargo) VALUES
     ('Jorge','Perez','11000000','jorgeisgay@gmail.com','batallagallo','rapero');
+
+
+#insertando datos para curso_instructor
+
+INSERT INTO curso_instructor (ci_id, ci_curso, ci_instructor) VALUES
+        (0, 2, 1)
+        (0, 1, 1)
+        (0, 3, 1);
+
+
+
+#insertando datos para curso_participante
+
+INSERT INTO curso_participante (cp_id, cp_curso, ci_participante) VALUES
+        (0, 2, 1)
+        (0, 2, 4)
+        (0, 2, 3)
+        (0, 2, 2)
+        (0, 3, 4)
+        (0, 3, 1)
+        (0, 1, 3)
+        (0, 1, 1);

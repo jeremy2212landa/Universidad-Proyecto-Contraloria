@@ -1,17 +1,3 @@
-<style>
-  .bordez {
-    border: 1px solid #d0d0d0;
-  }
-  td{
-    border: 1px solid #d0d0d0;
-  }
-  table{
-    margin: 25px auto;
-  }
-  form{
-    display: inline-block;
-  }
-</style>
 <div align="center">
 <h1>Gestion de cursos</h1>
 <form method="post">
@@ -32,10 +18,6 @@
         <td>' . $key['curso_id'] . '</td>
         <td>' . $key['curso_name'] . '</td>
         <td>
-          <form method="post">
-            <input type="hidden" name="r" value="edit_curso">
-            <input type="hidden" name="c" value="' . $key['curso_id'] . '">
-            <input type="submit" name="envio" value="Editar">
           </form>
           <form method="post">
             <input type="hidden" name="r" value="delete_curso">
@@ -52,7 +34,7 @@
         <td>' . $key['curso_fecha'] . '</td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="4" align="center">
         <form align="center" method="post">
           <input type="hidden" name="r" value="info_curso">
           <input type="hidden" name="c" value="' . $key['curso_id'] . '">

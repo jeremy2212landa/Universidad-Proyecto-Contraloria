@@ -7,7 +7,7 @@ class CP_Model extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "INSERT INTO curso_participante ('cp_id', 'cp_curso', 'cp_participante') VALUES ($cp_id, $cp_curso, $cp_participante)";
+		$this->query = "INSERT INTO curso_participante (cp_id, cp_curso, cp_participante) VALUES ($cp_id, $cp_curso, $cp_participante)";
 		$this->set_query();
 	}
 

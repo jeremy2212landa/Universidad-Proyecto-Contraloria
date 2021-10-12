@@ -9,7 +9,7 @@ class InstructorModel extends Model {
 			$$key = $value;
 		}
 
-    $this->query = "INSERT INTO instructores ('instructor_id', 'nombre', 'apellido', 'cedula' 'correo', 'instituto', 'cargo') VALUES ('$clave_instructor', '$nombre_instructor', '$apellido_instructor', '$cedula_instructor', '$correo_instructor' , '$instituto_instructor', 'cargo_instructor')";
+    $this->query = "INSERT INTO instructores (instructor_id, nombre, apellido, cedula, correo, instituto, cargo) VALUES ('$clave_instructor', '$nombre_instructor', '$apellido_instructor', '$cedula_instructor', '$correo_instructor' , '$instituto_instructor', 'cargo_instructor')";
 		$this->set_query();
 		$this->set_query();
 	}

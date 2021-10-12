@@ -1,4 +1,19 @@
 <style>
+  .bordez {
+    border: 1px solid #d0d0d0;
+  }
+  td{
+    border: 1px solid #d0d0d0;
+  }
+  table{
+    margin: 25px auto;
+  }
+  form{
+    display: inline-block;
+  }
+</style>
+
+<style>
   * {
       margin: 0;
       padding: 0;

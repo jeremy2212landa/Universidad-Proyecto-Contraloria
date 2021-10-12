@@ -9,7 +9,7 @@ class ParticipantesModel extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "INSERT INTO participantes ('participante_id', 'nombre', 'apellido', 'cedula', 'correo', 'direccion') VALUES ('$clave_participante', '$nombre_participante', '$apellido_participante', '$cedula_participante', '$correo_participante' , '$direccion_participante')";
+		$this->query = "INSERT INTO participantes (participante_id, nombre, apellido, cedula, correo, direccion) VALUES ('$clave_participante', '$nombre_participante', '$apellido_participante', '$cedula_participante', '$correo_participante' , '$direccion_participante')";
 		$this->set_query();
 	}
 

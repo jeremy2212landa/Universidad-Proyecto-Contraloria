@@ -27,6 +27,7 @@ class Router {
 					else if( ($_POST['r']) == 'delete_curso' )  $controller->load_view('delete_curso');
 					else if( ($_POST['r']) == 'add_curso' )  $controller->load_view('add_curso');
 					else if( ($_POST['r']) == 'info_curso' )  $controller->load_view('info_curso');
+					else if( ($_POST['r']) == 'add_usuario' )  $controller->load_view('add_usuario');
 					break;
 
 				case 'cursos':

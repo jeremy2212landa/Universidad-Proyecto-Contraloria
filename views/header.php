@@ -23,6 +23,9 @@
       color: white;
       text-decoration: none;
   }
+  a{
+    color: #FFF;
+  }
 
   body {
     background: url(./img/fd.jpg);
@@ -128,7 +131,7 @@
     <input type="search" name="search" placeholder="Busqueda" id="separer"></input>
     <input type="submit" name="buscar" id="separador_buscar" value="buscar"></input>
   </form>
-  <a href="./?r=cursos">Cursos</a>
+  <!--<a href="./?r=cursos">Cursos</a>-->
   <a href="./?r=users">Users</a>
   <a href="./?r=salir">Salir</a>
 </nav>

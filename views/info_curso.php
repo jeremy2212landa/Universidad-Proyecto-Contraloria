@@ -48,7 +48,6 @@ $template = '<h2>Instructor</h2>
     <td>Correo</td>
     <td>Instituto</td>
     <td>Cargo</td>
-    <td>opciones</td>
   </tr>';
 
   foreach ($ci_datos as $key) {
@@ -60,15 +59,14 @@ $template = '<h2>Instructor</h2>
       <td>'. $key['correo'] .'</td>
       <td>'. $key['instituto'] .'</td>
       <td>'. $key['cargo'] .'</td>
-      <td>
-      <form method="post">
-        <input type="submit" name=edit_instructor value="Editar">
-        </td>
     </tr>';
   }
 
   $template .= '
-</table>';
+</table>
+<form method="post">
+  <input type="submit" name=edit_instructor value="Editar">
+</form>';
 
 $template .= '<br><br><br>
 <h2>Participantes</h2>
@@ -90,20 +88,26 @@ $template .= '<br><br><br>
       <td>'. $key['cedula'] .'</td>
       <td>'. $key['correo'] .'</td>
       <td>'. $key['direccion'] .'</td>
-      <td><form method="post">
+      <td>
+      <form method="post">
         <input type="submit" name=edit_instructor value="Editar">
-        </td></td>
-      <td><form method="post">
+      </form>
+      </td>
+      <td>
+      <form method="post">
         <input type="submit" name=edit_instructor value="Eliminar">
-        </td></td>
+      </form>
+      </td>
     </tr>';
   }
   $template .= '
   <tr>
-    <td colspan="7" align="center"><form method="post">
+    <td colspan="7" align="center">
+    <form method="post">
       <input type="hidden" name="r" value="add_usuario">
       <input type="submit" name=add_usuario value="Agregar">
-    </form></td>
+    </form>
+    </td>
   </tr>
 </table>';
   printf($template);

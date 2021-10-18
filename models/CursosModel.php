@@ -44,7 +44,6 @@ class CursosModel extends Model {
 		$this->query = "DELETE FROM cursos WHERE curso_id = $cursos_id";
 		$this->set_query();
 	}
-
 }
 
 ?>

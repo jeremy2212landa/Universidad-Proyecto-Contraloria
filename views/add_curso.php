@@ -28,8 +28,8 @@ if ($_POST['r'] == 'add_curso' && $_POST['op'] == 'set') {
 //var_dump ($curso_data);
   $curso1 = new CursosModel();
   $cursoadd = $curso1->create($curso_data);
-  
+  $l_id = $curso1->last_id;
 
-  header('Location: ./?r=home');
+  header('Location: ./?r=cursos&c=' .$l_id);
 }
 ?>

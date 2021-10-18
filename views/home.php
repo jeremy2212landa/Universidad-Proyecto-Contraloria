@@ -35,7 +35,7 @@
       </tr>
       <tr>
         <td colspan="4" align="center">
-        <form align="center" method="post">
+        <form align="center" action="./?c='. $key['curso_id'] .'" method="post">
           <input type="hidden" name="r" value="info_curso">
           <input type="hidden" name="c" value="' . $key['curso_id'] . '">
           <input type="submit" name="informacion" value="Info">

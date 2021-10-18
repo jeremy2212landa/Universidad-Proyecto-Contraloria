@@ -7,6 +7,7 @@ abstract class Model {
 	private static $db_charset = 'utf8';
 	private $conn;
 	protected $query;
+	public $last_id;
 	protected $rows = array();
 
   abstract protected function create();
@@ -32,6 +33,7 @@ abstract class Model {
 	protected function set_query() {
 		$this->db_open();
 		$this->conn->query($this->query);
+		$this->last_id = $this->conn->insert_id;
 		$this->db_close();
 	}
 

@@ -30,10 +30,10 @@ class Router {
 					else if( ($_POST['r']) == 'add_usuario' )  $controller->load_view('add_usuario');
 					break;
 
-				/*case 'cursos':
-						if ( !isset($_POST['r']) ) $controller->load_view('cursos');
-						else if( $_POST['r'] == 'curso_edit' )  $controller->load_view('curso_edit');
-						break;*/
+				case 'cursos':
+						if ( !isset($_POST['r']) ) $controller->load_view('info_curso');
+						else if( ($_POST['r']) == 'info_curso' )  $controller->load_view('info_curso');
+						break;
 
 				case 'users':
 						if ( !isset($_POST['r']) ) $controller->load_view('users');

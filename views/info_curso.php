@@ -4,40 +4,39 @@
 $cursos = new CursosModel();
 $cp = new CP_Model();
 $ci = new CI_Model();
-$cursos_datos = $cursos->read($_POST['c']);
-$cp_datos = $cp->read($_POST['c']);
-$ci_datos = $ci->read($_POST['c']);
+$instructor = new InstructorModel();
+$cursos_datos = $cursos->read($_GET['c']);
+$cp_datos = $cp->read($_GET['c']);
+$ci_datos = $ci->read($_GET['c']);
 
 //var_dump ($ci_datos);
 //var_dump ($cp_datos);
-foreach ($cursos_datos as $key) {
   print('<h2>Curso</h2>
   <table class="bordez">
     <tr>
-      <td>' . $key['curso_id'] . '</td>
-      <td>' . $key['curso_name'] . '</td>
+      <td>' . $cursos_datos[0]['curso_id'] . '</td>
+      <td>' . $cursos_datos[0]['curso_name'] . '</td>
       <td>
         <form method="post">
           <input type="hidden" name="r" value="edit_curso">
-          <input type="hidden" name="c" value="' . $key['curso_id'] . '">
+          <input type="hidden" name="c" value="' . $cursos_datos[0]['curso_id'] . '">
           <input type="submit" name="envio" value="Editar">
         </form>
         <form method="post">
           <input type="hidden" name="r" value="delete_curso">
-          <input type="hidden" name="c" value="' . $key['curso_id'] . '">
+          <input type="hidden" name="c" value="' . $cursos_datos[0]['curso_id'] . '">
           <input type="submit" name="delete" value="Eliminar">
         </form>
       </td>
     </tr>
     <tr>
-      <td colspan="3">' . $key['curso_description'] . '</td>
+      <td colspan="3">' . $cursos_datos[0]['curso_description'] . '</td>
     </tr>
     <tr>
-      <td colspan="2">' . $key['curso_contralor'] . '</td>
-      <td>' . $key['curso_fecha'] . '</td>
+      <td colspan="2">' . $cursos_datos[0]['curso_contralor'] . '</td>
+      <td>' . $cursos_datos[0]['curso_fecha'] . '</td>
     </tr>
   </table><br><br><br>');
-}
 
 $template = '<h2>Instructor</h2>
 <table class="bordez">
@@ -50,23 +49,45 @@ $template = '<h2>Instructor</h2>
     <td>Cargo</td>
   </tr>';
 
-  foreach ($ci_datos as $key) {
-    $template .= '
-    <tr>
-      <td>'. $key['nombre'] .'</td>
-      <td>'. $key['apellido'] .'</td>
-      <td>'. $key['cedula'] .'</td>
-      <td>'. $key['correo'] .'</td>
-      <td>'. $key['instituto'] .'</td>
-      <td>'. $key['cargo'] .'</td>
-    </tr>';
-  }
-
+if (empty($ci_datos)) {
   $template .= '
-</table>
-<form method="post">
-  <input type="submit" name=edit_instructor value="Editar">
-</form>';
+  <tr>
+  <td>
+    <form method="post">
+    <input type="text" name="" value="" placeholder="Nombre">
+  </td>
+  <td><input type="text" name="" value="" placeholder="apellido"></td>
+  <td><input type="text" name="" value="" placeholder="cedula"></td>
+  <td><input type="text" name="" value="" placeholder="correo"></td>
+  <td><input type="text" name="" value="" placeholder="Instituto"></td>
+  <td>
+    <input type="text" name="" value="" placeholder="cargo">
+  </td>
+  </tr></table>
+  <input type="hidden" name="c" value="setinstructor">
+  <input type="hidden" name="r" value="info_curso">
+  <input type="hidden" name="inst" value="'. $_GET['c'] .'">
+  <input type="submit" name="" value="Enviar">
+  </form>';
+}else {
+  $template .= '
+  <tr>
+  <td>'. $ci_datos[0]['nombre'] .'</td>
+  <td>'. $ci_datos[0]['apellido'] .'</td>
+  <td>'. $ci_datos[0]['cedula'] .'</td>
+  <td>'. $ci_datos[0]['correo'] .'</td>
+  <td>'. $ci_datos[0]['instituto'] .'</td>
+  <td>'. $ci_datos[0]['cargo'] .'</td>
+  </tr>
+  </table>';
+}
+
+
+if ($_POST['r'] == 'info_curso' && isset($_POST['op']) == 'setinstructor') {
+
+}
+
+
 
 $template .= '<br><br><br>
 <h2>Participantes</h2>
@@ -112,8 +133,6 @@ $template .= '<br><br><br>
 </table>';
   printf($template);
 ?>
-
-
 
 
 

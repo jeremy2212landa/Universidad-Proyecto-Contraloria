@@ -22,20 +22,18 @@ CREATE TABLE cursos(
 );
 
 CREATE TABLE participantes(
-  participante_id INT(9) PRIMARY KEY AUTO_INCREMENT,
+  cedula INT(9) PRIMARY KEY,
   nombre VARCHAR(30) NOT NULL,
   apellido VARCHAR(30),
-  cedula int(9) NOT NULL,
   correo VARCHAR(30),
   direccion VARCHAR(50),
   FULLTEXT KEY searchparticipantes(nombre, apellido, correo, direccion)
 );
 
-CREATE TABLE intructores(
-  instructor_id int(9) PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE instructores(
+  cedula int(9) PRIMARY KEY,
   nombre VARCHAR(30) NOT NULL,
   apellido VARCHAR(30),
-  cedula int(9) NOT NULL,
   correo VARCHAR(30),
   instituto VARCHAR(30),
   cargo VARCHAR(30),
@@ -48,7 +46,7 @@ CREATE TABLE curso_participante(
   cp_participante INT(9),
   FOREIGN KEY (cp_curso) REFERENCES cursos(curso_id)
     ON DELETE RESTRICT ON UPDATE CASCADE,
-  FOREIGN KEY (cp_participante) REFERENCES participantes(participante_id)
+  FOREIGN KEY (cp_participante) REFERENCES participantes(cedula)
     ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -58,7 +56,7 @@ CREATE TABLE curso_instructor(
   ci_instructor INT(9),
   FOREIGN KEY (ci_curso) REFERENCES cursos(curso_id)
     ON DELETE RESTRICT ON UPDATE CASCADE,
-  FOREIGN KEY (ci_instructor) REFERENCES intructores(instructor_id)
+  FOREIGN KEY (ci_instructor) REFERENCES instructores(cedula)
     ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -91,27 +89,27 @@ INSERT INTO participantes (nombre, apellido, cedula, correo, direccion) VALUES
 
 #insertando datos para instructores
 
-INSERT INTO intructores (nombre, apellido, cedula, correo, instituto, cargo) VALUES
-    ('Jorge','Perez','11000000','jorgeisgay@gmail.com','batallagallo','rapero');
+INSERT INTO instructores (nombre, apellido, cedula, correo, instituto, cargo) VALUES
+    ('Jorge','Perez',13727163,'jorgeisgay@gmail.com','batallagallo','rapero');
 
 
 #insertando datos para curso_instructor
 
-INSERT INTO curso_instructor (ci_id, ci_curso, ci_instructor) VALUES
-        (0, 2, 1)
-        (0, 1, 1)
-        (0, 3, 1);
+INSERT INTO curso_instructor (ci_curso, ci_instructor) VALUES
+        (2, 13727163),
+        (1, 13727163),
+        (3, 13727163);
 
 
 
 #insertando datos para curso_participante
 
-INSERT INTO curso_participante (cp_id, cp_curso, ci_participante) VALUES
-        (0, 2, 1)
-        (0, 2, 4)
-        (0, 2, 3)
-        (0, 2, 2)
-        (0, 3, 4)
-        (0, 3, 1)
-        (0, 1, 3)
-        (0, 1, 1);
+INSERT INTO curso_participante (cp_curso, cp_participante) VALUES
+        (2, 28463395),
+        (2, 28333444),
+        (2, 28222333),
+        (2, 28111222),
+        (3, 28333444),
+        (3, 28463395),
+        (1, 28222333),
+        (1, 28463395);

@@ -7,23 +7,23 @@ class CP_Model extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "INSERT INTO curso_participante (cp_id, cp_curso, cp_participante) VALUES ($cp_id, $cp_curso, $cp_participante)";
+		$this->query = "INSERT INTO curso_participante (cp_curso, cp_participante) VALUES ($cp_curso, $cp_participante)";
 		$this->set_query();
 	}
 
 	public function read( $cp_id = '' ) {
 		$this->query = ($cp_id != '')
-    ?"SELECT c.curso_id, c.curso_name, c.curso_fecha, p.participante_id, p.nombre, p.apellido, p.cedula, p.correo, p.direccion
+    ?"SELECT c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion
 		FROM cursos AS c
 		INNER JOIN curso_participante AS cp ON c.curso_id=cp.cp_curso
-		INNER JOIN participantes as p ON cp.cp_participante=p.participante_id
+		INNER JOIN participantes as p ON cp.cp_participante=p.cedula
 		WHERE c.curso_id = $cp_id
 		ORDER BY p.apellido"
 
-    :"SELECT c.curso_id, c.curso_name, c.curso_fecha, p.participante_id, p.nombre, p.apellido, p.cedula, p.correo, p.direccion
+    :"SELECT c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion
 		FROM cursos AS c
 		INNER JOIN curso_participante AS cp ON c.curso_id=cp.cp_curso
-		INNER JOIN participantes as p ON cp.cp_participante=p.participante_id";
+		INNER JOIN participantes as p ON cp.cp_participante=p.cedula";
 
 		$this->get_query();
 

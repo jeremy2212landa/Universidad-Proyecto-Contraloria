@@ -9,7 +9,7 @@ class InstructorModel extends Model {
 			$$key = $value;
 		}
 
-    $this->query = "INSERT INTO instructores (instructor_id, nombre, apellido, cedula, correo, instituto, cargo) VALUES ('$clave_instructor', '$nombre_instructor', '$apellido_instructor', '$cedula_instructor', '$correo_instructor' , '$instituto_instructor', 'cargo_instructor')";
+    $this->query = "INSERT INTO instructores (nombre, apellido, cedula, correo, instituto, cargo) VALUES ('$nombre_instructor', '$apellido_instructor', '$cedula_instructor', '$correo_instructor' , '$instituto_instructor', '$cargo_instructor')";
 		$this->set_query();
 		$this->set_query();
 	}
@@ -37,7 +37,7 @@ class InstructorModel extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "UPDATE instructores SET instructor_id = $clave_instructor, nombre = '$nombre_instructor' , apellido = '$apellido_instructor', cedula = '$cedula_instructor', correo = '$correo_instructor', instituto = '$instituto_instructor', cargo = '$cargo_instructor' WHERE cedula = $cedula_instructor";
+		$this->query = "UPDATE instructores SET nombre = '$nombre_instructor' , apellido = '$apellido_instructor', cedula = '$cedula_instructor', correo = '$correo_instructor', instituto = '$instituto_instructor', cargo = '$cargo_instructor' WHERE cedula = $cedula_instructor";
 		$this->set_query();
 	}
 

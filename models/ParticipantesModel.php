@@ -9,7 +9,7 @@ class ParticipantesModel extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "INSERT INTO participantes (participante_id, nombre, apellido, cedula, correo, direccion) VALUES ('$clave_participante', '$nombre_participante', '$apellido_participante', '$cedula_participante', '$correo_participante' , '$direccion_participante')";
+		$this->query = "INSERT INTO participantes (nombre, apellido, cedula, correo, direccion) VALUES ('$nombre_participante', '$apellido_participante', '$cedula_participante', '$correo_participante' , '$direccion_participante')";
 		$this->set_query();
 	}
 
@@ -36,7 +36,7 @@ class ParticipantesModel extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "UPDATE participantes SET participante_id = $clave_participante, nombre = '$nombre_participante', apellido = '$apellido_participante' , cedula = $cedula_participante , correo = '$correo_participante' , direccion = '$direccion_participante' WHERE cedula = $cedula_participante";
+		$this->query = "UPDATE participantes SET nombre = '$nombre_participante', apellido = '$apellido_participante' , cedula = $cedula_participante , correo = '$correo_participante' , direccion = '$direccion_participante' WHERE cedula = $cedula_participante";
 		$this->set_query();
 	}
 

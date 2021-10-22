@@ -9,7 +9,7 @@ $cursos_datos = $cursos->read($_GET['c']);
 $cp_datos = $cp->read($_GET['c']);
 $ci_datos = $ci->read($_GET['c']);
 
-//var_dump ($ci_datos);
+//var_dump ($ci_datos[0]['ci_id']);
 //var_dump ($cp_datos);
   print('<h2>Curso</h2>
   <table class="bordez">
@@ -54,20 +54,39 @@ if (empty($ci_datos)) {
   <tr>
   <td>
     <form method="post">
-    <input type="text" name="" value="" placeholder="Nombre">
+    <input type="text" name="nombre_i" value="" placeholder="Nombre">
   </td>
-  <td><input type="text" name="" value="" placeholder="apellido"></td>
-  <td><input type="text" name="" value="" placeholder="cedula"></td>
-  <td><input type="text" name="" value="" placeholder="correo"></td>
-  <td><input type="text" name="" value="" placeholder="Instituto"></td>
+  <td><input type="text" name="apellido_i" value="" placeholder="apellido"></td>
+  <td><input type="text" name="cedula_i" value="" placeholder="cedula"></td>
+  <td><input type="text" name="correo_i" value="" placeholder="correo"></td>
+  <td><input type="text" name="instituto_i" value="" placeholder="Instituto"></td>
   <td>
-    <input type="text" name="" value="" placeholder="cargo">
+    <input type="text" name="cargo_i" value="" placeholder="cargo">
   </td>
   </tr></table>
-  <input type="hidden" name="c" value="setinstructor">
+  <input type="hidden" name="op" value="set_instructor">
   <input type="hidden" name="r" value="info_curso">
-  <input type="hidden" name="inst" value="'. $_GET['c'] .'">
-  <input type="submit" name="" value="Enviar">
+  <input type="hidden" name="c" value="'. $_GET['c'] .'">
+  <input type="submit" name="envio_i" value="Enviar">
+  </form>';
+}else if (isset($_POST['actualizar_i'])){
+  $template .= '<tr>
+  <td>
+    <form method="post">
+    <input type="text" name="nombre_i" value="'. $ci_datos[0]['nombre'] .'" placeholder="Nombre">
+  </td>
+  <td><input type="text" name="apellido_i" value="'. $ci_datos[0]['apellido'] .'" placeholder="apellido"></td>
+  <td><input type="text" name="cedula_i" value="'. $ci_datos[0]['cedula'] .'" placeholder="cedula"></td>
+  <td><input type="text" name="correo_i" value="'. $ci_datos[0]['correo'] .'" placeholder="correo"></td>
+  <td><input type="text" name="instituto_i" value="'. $ci_datos[0]['instituto'] .'" placeholder="Instituto"></td>
+  <td>
+    <input type="text" name="cargo_i" value="'. $ci_datos[0]['cargo'] .'" placeholder="cargo">
+  </td>
+  </tr></table>
+  <input type="hidden" name="op" value="set_instructor">
+  <input type="hidden" name="r" value="info_curso">
+  <input type="hidden" name="c" value="'. $_GET['c'] .'">
+  <input type="submit" name="envio_i" value="Enviar">
   </form>';
 }else {
   $template .= '
@@ -79,12 +98,54 @@ if (empty($ci_datos)) {
   <td>'. $ci_datos[0]['instituto'] .'</td>
   <td>'. $ci_datos[0]['cargo'] .'</td>
   </tr>
-  </table>';
+  </table>
+  <form method="post">
+  <input type="hidden" name="r" value="info_curso">
+  <input type="hidden" name="c" value="'. $_GET['c'] .'">
+  <input type="submit" name="actualizar_i" value="actualizar">
+  </form>';
 }
 
 
-if ($_POST['r'] == 'info_curso' && isset($_POST['op']) == 'setinstructor') {
+if ($_POST['r'] == 'info_curso' && isset($_POST['op']) == 'set_instructor') {
 
+  $read_instructor = $instructor->read($_POST['cedula_i']);
+
+  if (empty($read_instructor)) {
+
+    if (!empty($ci_datos)) {
+      $drop_ci = $ci->delete($ci_datos[0]['ci_id']);
+    }
+    
+    $instructor_data = array(
+      'nombre_instructor' => $_POST['nombre_i'],
+      'apellido_instructor' => $_POST['apellido_i'],
+      'cedula_instructor' => $_POST['cedula_i'],
+      'correo_instructor' => $_POST['correo_i'],
+      'instituto_instructor' => $_POST['instituto_i'],
+      'cargo_instructor' => $_POST['cargo_i']);
+
+      $set_instructor = $instructor->create($instructor_data);
+
+      $set_ci = $ci->create($ci_data = array(
+        'ci_curso' => $_POST['c'],
+        'ci_instructor' => $_POST['cedula_i'])
+      );
+      header('Location: ./?r=cursos&c=' .$_POST['c']);
+  }else {
+
+    $instructor_data = array(
+      'nombre_instructor' => $_POST['nombre_i'],
+      'apellido_instructor' => $_POST['apellido_i'],
+      'cedula_instructor' => $_POST['cedula_i'],
+      'correo_instructor' => $_POST['correo_i'],
+      'instituto_instructor' => $_POST['instituto_i'],
+      'cargo_instructor' => $_POST['cargo_i']);
+
+      $set_instructor = $instructor->update($instructor_data);
+
+      header('Location: ./?r=cursos&c=' .$_POST['c']);
+  }
 }
 
 

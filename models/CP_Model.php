@@ -52,6 +52,38 @@ class CP_Model extends Model {
 		$this->set_query();
 	}
 
+	public function verify( $cp_datos = array() ) {
+		foreach ($cp_datos as $key => $value) {
+			$$key = $value;
+		}
+
+		$this->query = ($cp_curso != '' && $cp_participante != '')
+    ?"SELECT cp.cp_id, c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion
+		FROM cursos AS c
+		INNER JOIN curso_participante AS cp ON c.curso_id=cp.cp_curso
+		INNER JOIN participantes as p ON cp.cp_participante=p.cedula
+		WHERE cp.cp_curso = $cp_curso AND cp.participante = $cp_participante
+		ORDER BY p.apellido"
+
+    :"SELECT cp.cp_id, c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion
+		FROM cursos AS c
+		INNER JOIN curso_participante AS cp ON c.curso_id=cp.cp_curso
+		INNER JOIN participantes as p ON cp.cp_participante=p.cedula";
+
+		$this->get_query();
+
+		// $num_rows = count($this->rows);
+
+		$data = array();
+
+		foreach ($this->rows as $key => $value) {
+			array_push($data, $value);
+		}
+
+		return $data;
+	}
+
+
 }
 
 ?>

@@ -1,7 +1,5 @@
 <?php
 class ParticipantesModel extends Model {
-	public $participantes_ci;
-	public $participantes;
 
 
 	public function create( $participantes_data = array() ) {
@@ -9,7 +7,7 @@ class ParticipantesModel extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "INSERT INTO participantes (nombre, apellido, cedula, correo, direccion) VALUES ('$nombre_participante', '$apellido_participante', '$cedula_participante', '$correo_participante' , '$direccion_participante')";
+		$this->query = "INSERT INTO participantes (cedula, nombre, apellido, correo, direccion) VALUES ($cedula_participante, '$nombre_participante', '$apellido_participante', '$correo_participante' , '$direccion_participante')";
 		$this->set_query();
 	}
 

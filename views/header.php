@@ -124,12 +124,12 @@
 <!-- Inicio de la Barra de navegacion -->
 <nav>
   <a href='./'>
-    <div class="icon"><img src="./img/CEBM.png"></img></div>
+    <div class="icon"><img src="./img/CEBM.png"></div>
   </a>
 
   <form class="busqueda" action="./?r=search">
-    <input type="search" name="search" placeholder="Busqueda" id="separer"></input>
-    <input type="submit" name="buscar" id="separador_buscar" value="buscar"></input>
+    <input type="search" name="search" placeholder="Busqueda" id="separer">
+    <input type="submit" name="buscar" id="separador_buscar" value="buscar">
   </form>
   <!--<a href="./?r=cursos">Cursos</a>-->
   <a href="./?r=users">Users</a>

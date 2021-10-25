@@ -15,8 +15,10 @@ class CursosModel extends Model {
 
 	public function read( $cursos_id = '' ) {
 		$this->query = ($cursos_id != '')
-    ?"SELECT * FROM cursos WHERE curso_id = $cursos_id"
-    :"SELECT * FROM cursos";
+    ?"SELECT * FROM cursos WHERE curso_id = $cursos_id
+		ORDER BY curso_fecha"
+    :"SELECT * FROM cursos
+		 ORDER BY curso_fecha DESC";
 
 		$this->get_query();
 

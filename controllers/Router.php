@@ -33,10 +33,13 @@ class Router {
 				case 'cursos':
 						if ( !isset($_POST['r']) ) $controller->load_view('info_curso');
 						else if( ($_POST['r']) == 'info_curso' )  $controller->load_view('info_curso');
+						else if( ($_POST['r']) == 'delete_curso' )  $controller->load_view('delete_curso');
+						else if( ($_POST['r']) == 'participantes' )  $controller->load_view('participantes');
 						break;
 
-				case 'participantes':
+				case 'participante':
 						if ( !isset($_POST['r']) ) $controller->load_view('participantes');
+						else if( ($_POST['r']) == 'participantes' )  $controller->load_view('participantes');
 						break;
 
 				case 'users':

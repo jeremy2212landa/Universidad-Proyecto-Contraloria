@@ -13,14 +13,14 @@ class CP_Model extends Model {
 
 	public function read( $cp_id = '' ) {
 		$this->query = ($cp_id != '')
-    ?"SELECT c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion
+    ?"SELECT c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion, cp.cp_id
 		FROM cursos AS c
 		INNER JOIN curso_participante AS cp ON c.curso_id=cp.cp_curso
 		INNER JOIN participantes as p ON cp.cp_participante=p.cedula
 		WHERE c.curso_id = $cp_id
 		ORDER BY p.apellido"
 
-    :"SELECT c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion
+    :"SELECT c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion, cp.cp_id
 		FROM cursos AS c
 		INNER JOIN curso_participante AS cp ON c.curso_id=cp.cp_curso
 		INNER JOIN participantes as p ON cp.cp_participante=p.cedula";
@@ -52,26 +52,16 @@ class CP_Model extends Model {
 		$this->set_query();
 	}
 
-	public function verify( $cp_datos = array() ) {
-		foreach ($cp_datos as $key => $value) {
+	public function verify( $cp_data = array() ) {
+		$this->rows =  NULL;
+		foreach ($cp_data as $key => $value) {
 			$$key = $value;
 		}
 
-		$this->query = ($cp_curso != '' && $cp_participante != '')
-    ?"SELECT cp.cp_id, c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion
-		FROM cursos AS c
-		INNER JOIN curso_participante AS cp ON c.curso_id=cp.cp_curso
-		INNER JOIN participantes as p ON cp.cp_participante=p.cedula
-		WHERE cp.cp_curso = $cp_curso AND cp.participante = $cp_participante
-		ORDER BY p.apellido"
-
-    :"SELECT cp.cp_id, c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion
-		FROM cursos AS c
-		INNER JOIN curso_participante AS cp ON c.curso_id=cp.cp_curso
-		INNER JOIN participantes as p ON cp.cp_participante=p.cedula";
+		$this->query = "SELECT cp_id FROM curso_participante WHERE cp_participante = $participante AND cp_curso = $curso";
 
 		$this->get_query();
-
+		//var_dump($this->rows);
 		// $num_rows = count($this->rows);
 
 		$data = array();
@@ -82,6 +72,12 @@ class CP_Model extends Model {
 
 		return $data;
 	}
+
+	public function delete_relation( $cp_curso = '' ) {
+		$this->query = "DELETE FROM curso_participante WHERE cp_curso = $cp_curso";
+		$this->set_query();
+	}
+
 
 
 }

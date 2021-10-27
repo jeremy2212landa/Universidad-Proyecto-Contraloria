@@ -1,7 +1,5 @@
 <?php
 class CursosModel extends Model {
-	public $cursos_id;
-	public $cursos;
 
 
 	public function create( $cursos_data = array() ) {

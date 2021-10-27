@@ -10,3 +10,6 @@ $curso = new CursosModel();
  $curso->update($Data_C);
 
 echo "hola panfilo";
+
+
+<textarea name="curso_description"  rows="8" cols="80">'. $cursos_read[0]['curso_description'] .'</textarea><br>

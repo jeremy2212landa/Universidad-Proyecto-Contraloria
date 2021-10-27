@@ -52,6 +52,11 @@ class CI_Model extends Model {
 		$this->set_query();
 	}
 
+	public function delete_relation( $ci_curso = '' ) {
+		$this->query = "DELETE FROM curso_instructor WHERE ci_curso = $ci_curso";
+		$this->set_query();
+	}
+
 }
 
 ?>

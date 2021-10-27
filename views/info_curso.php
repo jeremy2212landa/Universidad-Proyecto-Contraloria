@@ -17,7 +17,6 @@ $ci_datos = $ci->read($_GET['c']);
 //   'correo_participante' => $_POST['correo_p'],
 //   'direccion_participante' => $_POST['direccion_p']
 // );
-//var_dump($participante_dat);
   print('<h2>Curso</h2>
   <table class="bordez">
     <tr>
@@ -90,7 +89,7 @@ if (empty($ci_datos)) {
       <input type="hidden" name="op" value="set_instructor">
       <input type="hidden" name="r" value="info_curso">
       <input type="hidden" name="c" value="'. $_GET['c'] .'">
-      <input type="submit" name="envio_instructor" value="Enviar">
+      <input type="submit" name="envio_instructor" value="Editar">
     </td>
   </form>
   </tr>
@@ -108,7 +107,7 @@ if (empty($ci_datos)) {
         <form method="post">
         <input type="hidden" name="r" value="info_curso">
         <input type="hidden" name="c" value="'. $_GET['c'] .'">
-        <input type="submit" name="envio_instructor" value="Enviar">
+        <input type="submit" name="envio_instructor" value="Editar">
         </form>
       </td>
     </tr>
@@ -195,44 +194,56 @@ $template .= '<br><br><br>
       <td>'. $key['direccion'] .'</td>
       <td>
         <form method="post">
+          <input type="hidden" name="c" value="'. $_GET['c'] .'">
+          <input type="hidden" name="r" value="info_curso">
+          <input type="hidden" name="op" value="editp">
+          <input type="hidden" name="idp" value="'. $key['cedula'] .'">
           <input type="submit" name="edit_participante" value="Editar">
         </form>
       </td>
       <td>
         <form method="post">
-          <input type="submit" name="edit_participante" value="Eliminar">
+          <input type="hidden" name="c" value="'. $_GET['c'] .'">
+          <input type="hidden" name="r" value="info_curso">
+          <input type="hidden" name="op" value="deletep">
+          <input type="hidden" name="idp" value="'. $key['cp_id'] .'">
+          <input type="submit" name="delete_participante" value="Eliminar">
         </form>
       </td>
     </tr>';
   }
   $template .= '
   <tr>
-    <td colspan="7">
-      <form method="post">
-      <input type="text" name="nombre_p" value="" placeholder="Nombre" required>
-      <input type="text" name="apellido_p" value="" placeholder="Apellido" required>
-      <input type="text" name="cedula_p" value="" placeholder="Cedula" required>
-      <input type="text" name="correo_p" value="" placeholder="Correo" required>
-      <input type="text" name="direccion_p" value="" placeholder="Direccion" required>
+  <form method="post">
+    <td><input type="text" name="nombre_p" value="" placeholder="Nombre" required></td>
+    <td><input type="text" name="apellido_p" value="" placeholder="Apellido" required></td>
+    <td><input type="text" name="cedula_p" value="" placeholder="Cedula" required></td>
+    <td><input type="text" name="correo_p" value="" placeholder="Correo" required></td>
+    <td><input type="text" name="direccion_p" value="" placeholder="Direccion" required></td>
+    <td>
       <input type="hidden" name="r" value="info_curso">
-      <input type="hidden" name="op" value="set_participante">
+      <input type="hidden" name="op" value="setp">
       <input type="hidden" name="c" value="'. $_GET['c'] .'">
       <input type="submit" name="envio_participante" value="añadir">
-      </form>
     </td>
+  </form>
   </tr>
 </table>';
 
-if ($_POST['r'] == 'info_curso' && $_POST['op'] == 'set_participante' && isset($_POST['envio_participante'])) {
+if ($_POST['r'] == 'info_curso' && $_POST['op'] == 'editp' && isset($_POST['edit_participante'])) {
+  header('Location: ./?r=participante&c=' .$_POST['c'].'&ci='.$_POST['idp']);
+}
+
+if ($_POST['r'] == 'info_curso' && $_POST['op'] == 'deletep' && isset($_POST['delete_participante'])) {
+  $delp = $cp->delete($_POST['idp']);
+  header('Location: ./?r=cursos&c=' .$_POST['c']);
+}
+
+if ($_POST['r'] == 'info_curso' && $_POST['op'] == 'setp' && isset($_POST['envio_participante'])) {
 
   $read_participante = $participantes->read($_POST['cedula_p']);
-  $cp_data = array(
-    'cp_curso' => $_POST['c'],
-    'cp_participante' => $_POST['cedula_p']);
 
-  $verify_rel_cp = $cp->verify($cp_data);
-
-  $participante_dat = array(
+  $participante_data = array(
     'nombre_participante' => $_POST['nombre_p'],
     'apellido_participante' => $_POST['apellido_p'],
     'cedula_participante' => $_POST['cedula_p'],
@@ -240,21 +251,29 @@ if ($_POST['r'] == 'info_curso' && $_POST['op'] == 'set_participante' && isset($
     'direccion_participante' => $_POST['direccion_p']
   );
 
-
-
   if (empty($read_participante)){
-    $set = $participantes->create($participante_dat);
+    $set = $participantes->create($participante_data);
   }else {
-    $set = $participantes->update($participante_dat);
+    $set = $participantes->update($participante_data);
   }
 
-  if (empty($verify_rel_cp)) {
+  $verificacion = $cp->verify( $ver = array(
+    'curso' => $_GET['c'],
+    'participante' => $_POST['cedula_p']) );
 
-    $set_cp = $cp->create( $set = array(
-      'cp_curso' => $_POST['c'],
-      'cp_participante' => ['cedula_p']));
 
-  }
+
+if (empty($verificacion)) {
+  $set_cp = $cp->create( $set = array(
+    'cp_curso' => $_POST['c'],
+    'cp_participante' => $_POST['cedula_p']) );
+}else {
+  $drop_cp = $cp->delete($verificacion[0]['cp_id']);
+  $set_cp = $cp->create( $set = array(
+    'cp_curso' => $_POST['c'],
+    'cp_participante' => $_POST['cedula_p']) );
+}
+unset($verificacion);
 
   header('Location: ./?r=cursos&c=' .$_POST['c']);
 

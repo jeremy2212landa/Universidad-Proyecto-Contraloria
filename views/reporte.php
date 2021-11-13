@@ -22,7 +22,7 @@ $template = '
 if (isset($_POST['check'])) {
 
   if ($_POST['report'] == 'rep') {
-
+    $culo = '';
     $cur = new CursosModel();
     $get_cur = $cur->read();
     $template = '

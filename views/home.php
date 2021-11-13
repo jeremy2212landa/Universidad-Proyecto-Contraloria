@@ -17,6 +17,7 @@
       <tr>
         <td>' . $key['curso_id'] . '</td>
         <td>' . $key['curso_name'] . '</td>
+        <td>Horas: ' . $key['curso_horas'] .'</td>
         <td>
           </form>
           <form method="post">
@@ -27,15 +28,15 @@
         </td>
       </tr>
       <tr>
-        <td colspan="3">' . $key['curso_description'] . '</td>
+        <td colspan="4">' . $key['curso_description'] . '</td>
       </tr>
       <tr>
-        <td colspan="2">' . $key['curso_contralor'] . '</td>
+        <td colspan="3">' . $key['curso_contralor'] . '</td>
         <td>' . $key['curso_fecha'] . '</td>
       </tr>
       <tr>
         <td colspan="4" align="center">
-        <form align="center" action="./?c='. $key['curso_id'] .'" method="post">
+        <form align="center" action="./?r=cursos&c='. $key['curso_id'] .'" method="post">
           <input type="hidden" name="r" value="info_curso">
           <input type="hidden" name="c" value="' . $key['curso_id'] . '">
           <input type="submit" name="informacion" value="Info">

@@ -30,11 +30,18 @@ class Router {
 					else if( ($_POST['r']) == 'add_usuario' )  $controller->load_view('add_usuario');
 					break;
 
+					case 'report':
+					if ( !isset($_POST['r']) ) $controller->load_view('reporte');
+					else if( $_POST['r'] == 'report' )  $controller->load_view('reporte');
+					break;
+
 				case 'cursos':
 						if ( !isset($_POST['r']) ) $controller->load_view('info_curso');
 						else if( ($_POST['r']) == 'info_curso' )  $controller->load_view('info_curso');
 						else if( ($_POST['r']) == 'delete_curso' )  $controller->load_view('delete_curso');
 						else if( ($_POST['r']) == 'participantes' )  $controller->load_view('participantes');
+						else if( ($_POST['r']) == 'edit_curso' )  $controller->load_view('edit_curso');
+						else if( ($_POST['r']) == 'add_curso' )  $controller->load_view('add_curso');
 						break;
 
 				case 'participante':
@@ -48,6 +55,7 @@ class Router {
 						else if( $_POST['r'] == 'edit_user' )  $controller->load_view('edit_user');
 						else if( $_POST['r'] == 'delete_user' )  $controller->load_view('delete_user');
 				break;
+
 
 				case 'salir':
 					$user_session = new SessionController();

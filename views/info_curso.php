@@ -22,6 +22,7 @@ $ci_datos = $ci->read($_GET['c']);
     <tr>
       <td>' . $cursos_datos[0]['curso_id'] . '</td>
       <td>' . $cursos_datos[0]['curso_name'] . '</td>
+      <td>Horas: ' . $cursos_datos[0]['curso_horas'] . '</td>
       <td>
         <form method="post">
           <input type="hidden" name="r" value="edit_curso">
@@ -36,10 +37,10 @@ $ci_datos = $ci->read($_GET['c']);
       </td>
     </tr>
     <tr>
-      <td colspan="3">' . $cursos_datos[0]['curso_description'] . '</td>
+      <td colspan="4">' . $cursos_datos[0]['curso_description'] . '</td>
     </tr>
     <tr>
-      <td colspan="2">' . $cursos_datos[0]['curso_contralor'] . '</td>
+      <td colspan="3">' . $cursos_datos[0]['curso_contralor'] . '</td>
       <td>' . $cursos_datos[0]['curso_fecha'] . '</td>
     </tr>
   </table><br><br><br>');

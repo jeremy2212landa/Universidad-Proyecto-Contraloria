@@ -77,7 +77,32 @@ class CP_Model extends Model {
 		$this->query = "DELETE FROM curso_participante WHERE cp_curso = $cp_curso";
 		$this->set_query();
 	}
+	public function read_parti( $cedula = '' ) {
+		$this->query = ($cp_id != '')
+		?"SELECT c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion, cp.cp_id
+		FROM cursos AS c
+		INNER JOIN curso_participante AS cp ON c.curso_id=cp.cp_curso
+		INNER JOIN participantes as p ON cp.cp_participante=p.cedula
+		WHERE p.cedula = $cedula
+		ORDER BY p.apellido"
 
+		:"SELECT c.curso_id, c.curso_name, c.curso_fecha, p.nombre, p.apellido, p.cedula, p.correo, p.direccion, cp.cp_id
+		FROM cursos AS c
+		INNER JOIN curso_participante AS cp ON c.curso_id=cp.cp_curso
+		INNER JOIN participantes as p ON cp.cp_participante=p.cedula";
+
+		$this->get_query();
+
+		// $num_rows = count($this->rows);
+
+		$data = array();
+
+		foreach ($this->rows as $key => $value) {
+			array_push($data, $value);
+		}
+
+		return $data;
+	}
 
 
 }

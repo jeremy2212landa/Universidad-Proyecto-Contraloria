@@ -28,6 +28,9 @@
   }
 
   body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     background: url(./img/fd.jpg);
       background-size: cover;
       background-attachment: fixed;
@@ -130,6 +133,9 @@
   <form class="busqueda" action="./?r=search">
     <input type="search" name="search" placeholder="Busqueda" id="separer">
     <input type="submit" name="buscar" id="separador_buscar" value="buscar">
+  </form>
+  <form method="post" action="./?r=report">
+    <input type="submit" name="" value="Reportes">
   </form>
   <!--<a href="./?r=cursos">Cursos</a>-->
   <a href="./?r=users">Users</a>

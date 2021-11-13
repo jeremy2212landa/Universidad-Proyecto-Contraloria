@@ -12,6 +12,7 @@ $cursos_read = $cursos->read($_POST['c']);
   Descripcion Curso:<textarea name="curso_description"  rows="8" cols="80">'. $cursos_read[0]['curso_description'] .'</textarea><br>
   Contralor:<input type="text" name="contralor" value="'. $cursos_read[0]['curso_contralor'] .'"><br>
   Fecha:<input type="datetime" name="fechia" value="'. $cursos_read[0]['curso_fecha'] .'"><br>
+  Horas:<input type="text" name="curso_hours" value="'. $cursos_read[0]['curso_horas'] .'"><br>
   <input type="submit" name="save" value="Guardar">
 </form>
 </div>';
@@ -23,7 +24,9 @@ if ($_POST['r'] == 'edit_curso' && $_POST['op'] == 'update') {
     'curso_nombre' => $_POST['name_curso'],
     'curso_descripcion' => $_POST['curso_description'],
     'curso_contralor' => $_POST['contralor'],
-    'curso_fecha' => $_POST['fechia']);
+    'curso_fecha' => $_POST['fechia'],
+    'curso_horas' => $_POST['curso_hours']
+  );
 
     $cursoedit = $cursos->update($curso_data);
 

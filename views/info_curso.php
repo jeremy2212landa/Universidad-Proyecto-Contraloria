@@ -1,4 +1,3 @@
-<div align="center">
 <?php
 $cursos = new CursosModel();
 $instructor = new InstructorModel();
@@ -17,7 +16,8 @@ $ci_datos = $ci->read($_GET['c']);
 //   'correo_participante' => $_POST['correo_p'],
 //   'direccion_participante' => $_POST['direccion_p']
 // );
-  print('<h2>Curso</h2>
+  $template = '<div align="center">
+  <h2>Curso</h2>
   <table class="bordez">
     <tr>
       <td>' . $cursos_datos[0]['curso_id'] . '</td>
@@ -43,9 +43,9 @@ $ci_datos = $ci->read($_GET['c']);
       <td colspan="3">' . $cursos_datos[0]['curso_contralor'] . '</td>
       <td>' . $cursos_datos[0]['curso_fecha'] . '</td>
     </tr>
-  </table><br><br><br>');
+  </table><br><br><br>';
 
-$template = '<h2>Instructor</h2>
+$template .= '<h2>Instructor</h2>
 <table class="bordez">
   <tr>
     <td>Nombre</td>
@@ -116,7 +116,7 @@ if (empty($ci_datos)) {
 }
 
 
-if ($_POST['r'] == 'info_curso' && $_POST['op'] == 'set_instructor' && isset($_POST['envio_instructor'])) {
+if (isset($_POST['r']) == 'info_curso' && isset($_POST['op']) == 'set_instructor' && isset($_POST['envio_instructor'])) {
 
   $read_instructor = $instructor->read($_POST['cedula_i']);
 
@@ -231,16 +231,16 @@ $template .= '<br><br><br>
   </tr>
 </table>';
 
-if ($_POST['r'] == 'info_curso' && $_POST['op'] == 'editp' && isset($_POST['edit_participante'])) {
+if (isset($_POST['r']) == 'info_curso' && isset($_POST['op']) == 'editp' && isset($_POST['edit_participante'])) {
   header('Location: ./?r=participante&c=' .$_POST['c'].'&ci='.$_POST['idp']);
 }
 
-if ($_POST['r'] == 'info_curso' && $_POST['op'] == 'deletep' && isset($_POST['delete_participante'])) {
+if (isset($_POST['r']) == 'info_curso' && isset($_POST['op']) == 'deletep' && isset($_POST['delete_participante'])) {
   $delp = $cp->delete($_POST['idp']);
   header('Location: ./?r=cursos&c=' .$_POST['c']);
 }
 
-if ($_POST['r'] == 'info_curso' && $_POST['op'] == 'setp' && isset($_POST['envio_participante'])) {
+if (isset($_POST['r']) == 'info_curso' && isset($_POST['op']) == 'setp' && isset($_POST['envio_participante'])) {
 
   $read_participante = $participantes->read($_POST['cedula_p']);
 

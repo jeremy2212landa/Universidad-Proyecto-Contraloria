@@ -10,7 +10,7 @@
       <input type="submit" name="delete" value="Eliminar">
     </form>';
 
-if ($_POST['r'] == 'delete_curso' && $_POST['op'] == 'delete') {
+if ($_POST['r'] == 'delete_curso' && isset($_POST['op']) == 'delete') {
     $cp = new CP_Model();
     $ci = new CI_Model();
     $relcp = $cp->delete_relation($_POST['c']);

@@ -1,12 +1,25 @@
 <?php
 
+if (isset($_POST['cachichen'])) {
+
+  require_once ('./vendor/autoload.php');
+  $mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/custom/temp/dir/path']);
+  $mpdf->WriteHTML('Hello World');
+  $mpdf->Output();
+}
+
+
+
 $template = '
+<div align="center">
+<form method="post">
+<input type="submit" name="cachichen" value="pdf"><br>
+</form><br>
+</div>
 <div align="center">
 <h3>Reporte</h3>
 <form method="post">
 <select name="report">
-
-<option value="rep">Reporte mensual</option>
 
 <option value="cur">Curso</option>
 
@@ -21,20 +34,7 @@ $template = '
 
 if (isset($_POST['check'])) {
 
-  if ($_POST['report'] == 'rep') {
-    $culo = '';
-    $cur = new CursosModel();
-    $get_cur = $cur->read();
-    $template = '
-    <table>
-    <tr>
-    <td>curso</td>
-    <td>mes</td>
-    <td>año</td>
-    </tr>
-    </table>';
-
-  }elseif ($_POST['report'] == 'cur') {
+  if ($_POST['report'] == 'cur') {
 
     $cur = new CursosModel();
     $get_cur = $cur->read();
@@ -58,10 +58,6 @@ if (isset($_POST['check'])) {
     </table>';
 
   }elseif ($_POST['report'] == 'par') {
-    $pdf=new FPDF();
-    $pdf->AddPage();
-    $pdf->SetTitle('Exemplo de Relatório em PDF via PHP');
-    $pdf->Output();
     $par = new ParticipantesModel();
     $get_par = $par->read();
     $template .= '

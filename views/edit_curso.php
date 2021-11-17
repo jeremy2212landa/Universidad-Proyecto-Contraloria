@@ -17,7 +17,7 @@ $cursos_read = $cursos->read($_POST['c']);
 </form>
 </div>';
 
-if ($_POST['r'] == 'edit_curso' && $_POST['op'] == 'update') {
+if ($_POST['r'] == 'edit_curso' && isset($_POST['op']) == 'update') {
 
   $curso_data = array(
     'curso_id' => $_POST['c'],

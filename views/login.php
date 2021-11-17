@@ -1,5 +1,5 @@
 <?php
-print('
+print('<div align="center">
 <form method="post">
 	<div>
 		<input type="text" name="loginuser" placeholder="usuario" required>
@@ -15,8 +15,9 @@ print('
 
 if( isset($_GET['error']) ) {
 	$template = '
-		<div class="container">
-			<p class="item  error">%s</p>
+			<div class="container">
+				<p class="item  error">%s</p>
+			</div>
 		</div>
 	';
 

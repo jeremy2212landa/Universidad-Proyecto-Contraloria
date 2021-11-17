@@ -1,3 +1,17 @@
+<?php
+print '
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<title>Gestion de Cursos CEBM</title>
+	<meta name="description" content="Proyecto Para la gestion de cursos de parte de estudiantes de la UPTAMCA">
+	<link rel="shortcut icon" type="image/png" href="./public/img/favicon.png">
+</head>
+<body>';
+?>
+
 <style>
   .bordez {
     border: 1px solid #d0d0d0;
@@ -123,22 +137,35 @@
   }
   /*---Fin de la Barra---*/
 </style>
+<?php
 
-<!-- Inicio de la Barra de navegacion -->
-<nav>
-  <a href='./'>
-    <div class="icon"><img src="./img/CEBM.png"></div>
-  </a>
+  if ($_SESSION['ok']) {
+    print '<!-- Inicio de la Barra puta desaparece de navegacion -->
+    <nav>
+      <a href="./">
+        <div class="icon"><img src="./img/CEBM.png"></div>
+      </a>
 
-  <form class="busqueda" action="./?r=search">
-    <input type="search" name="search" placeholder="Busqueda" id="separer">
-    <input type="submit" name="buscar" id="separador_buscar" value="buscar">
-  </form>
-  <form method="post" action="./?r=report">
-    <input type="submit" name="" value="Reportes">
-  </form>
-  <!--<a href="./?r=cursos">Cursos</a>-->
-  <a href="./?r=users">Users</a>
-  <a href="./?r=salir">Salir</a>
-</nav>
-<!-- Fin de la Barra de navegacion -->
+      <form class="busqueda" action="./?r=search">
+        <input type="search" name="search" placeholder="Busqueda" id="separer">
+        <input type="submit" name="buscar" id="separador_buscar" value="buscar">
+      </form>
+      <form method="post" action="./?r=report">
+        <input type="submit" name="" value="Reportes">
+      </form>
+      <!--<a href="./?r=cursos">Cursos</a>-->
+      <a href="./?r=users">Users</a>
+      <a href="./?r=salir">Salir</a>
+    </nav>
+    <!-- Fin de la Barra de navegacion -->';
+  }else {
+    print '<!-- Inicio de la Barra puta desaparece de navegacion -->
+    <nav align="center">
+      <a href="./">
+        <div class="icon"><img src="./img/CEBM.png"></div>
+      </a>
+    </nav>
+    <!-- Fin de la Barra de navegacion -->';
+  }
+
+?>

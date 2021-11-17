@@ -1,4 +1,5 @@
-<div align="center">
+<?php
+$template = '<div align="center">
   <h1>Crear nuevo Curso</h1>
 <form method="post">
   <input type="hidden" name="r" value="add_curso">
@@ -10,10 +11,8 @@
   Horas Academicas:<input type="number" name="curso_hours" value="" placeholder="Horas Academicas"><br>
   <input type="submit" name="save" value="Guardar">
 </form>
-</div>
-
-<?php
-if ($_POST['r'] == 'add_curso' && $_POST['op'] == 'set') {
+</div>';
+if ($_POST['r'] == 'add_curso' && isset($_POST['op']) == 'set') {
   //$cambiarfecha = $_POST['fechia'];
   //var_dump($cambiarfecha);
   //var_dump($_POST['curso_description']);
@@ -34,4 +33,5 @@ if ($_POST['r'] == 'add_curso' && $_POST['op'] == 'set') {
 
   header('Location: ./?r=cursos&c=' .$l_id);
 }
+ printf($template);
 ?>

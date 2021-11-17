@@ -13,6 +13,5 @@
   <h4>Developement by Jeremy Landa</h4>
   <h5>2021</h5>
 </div>
-
-  <script src="./js/reload.js"></script>
 <!-- Fin del pie de pagina -->
+</body>

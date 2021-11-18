@@ -1,4 +1,5 @@
 <?php
+define('RaizDIR' , __DIR__ );
 require_once('./controllers/Autoload.php');
 $autoload = new Autoload();
 

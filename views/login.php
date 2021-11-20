@@ -1,27 +1,28 @@
 <?php
-print('<div align="center">
-<form method="post">
-	<div>
-		<input type="text" name="loginuser" placeholder="usuario" required>
-	</div>
-	<div>
-		<input type="password" name="loginpass" placeholder="password" required>
-	</div>
-	<div>
-		<input type="submit" class="button" value="Enviar">
-	</div>
-</form>
-');
+$template = '
+<div class="log">
+	<form method="post">
+		<div>
+			<input type="text" name="loginuser" placeholder="Usuario" required>
+		</div>
+		<div>
+			<input type="password" name="loginpass" placeholder="Contraseña" required>
+		</div>
+		<div>
+			<input type="submit" class="button" value="Aceptar">
+		</div>
+	</form>
+';
 
 if( isset($_GET['error']) ) {
-	$template = '
-			<div class="container">
-				<p class="item  error">%s</p>
-			</div>
-		</div>
-	';
 
-	printf($template, $_GET['error']);
+	$template .= '
+			<div class="err">
+				<p class="item  error">'. $_GET['error'] .'</p>
+			</div>';
+
 }
 
+$template .= '</div>';
+printf($template);
 ?>

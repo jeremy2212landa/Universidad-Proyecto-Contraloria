@@ -27,12 +27,12 @@ $ci_datos = $ci->read($_GET['c']);
         <form method="post">
           <input type="hidden" name="r" value="edit_curso">
           <input type="hidden" name="c" value="' . $cursos_datos[0]['curso_id'] . '">
-          <input type="submit" name="envio" value="Editar">
+          <input id="button" type="submit" name="envio" value="Editar">
         </form>
         <form method="post">
           <input type="hidden" name="r" value="delete_curso">
           <input type="hidden" name="c" value="' . $cursos_datos[0]['curso_id'] . '">
-          <input type="submit" name="delete" value="Eliminar">
+          <input id="button" type="submit" name="delete" value="Eliminar">
         </form>
       </td>
     </tr>
@@ -71,7 +71,7 @@ if (empty($ci_datos)) {
           <input type="hidden" name="op" value="set_instructor">
           <input type="hidden" name="r" value="info_curso">
           <input type="hidden" name="c" value="'. $_GET['c'] .'">
-          <input type="submit" name="envio_instructor" value="Enviar">
+          <input id="button" type="submit" name="envio_instructor" value="Enviar">
         </td>
       </form>
     </tr>
@@ -90,7 +90,7 @@ if (empty($ci_datos)) {
       <input type="hidden" name="op" value="set_instructor">
       <input type="hidden" name="r" value="info_curso">
       <input type="hidden" name="c" value="'. $_GET['c'] .'">
-      <input type="submit" name="envio_instructor" value="Editar">
+      <input id="button" type="submit" name="envio_instructor" value="Editar">
     </td>
   </form>
   </tr>
@@ -108,7 +108,7 @@ if (empty($ci_datos)) {
         <form method="post">
         <input type="hidden" name="r" value="info_curso">
         <input type="hidden" name="c" value="'. $_GET['c'] .'">
-        <input type="submit" name="envio_instructor" value="Editar">
+        <input id="button" type="submit" name="envio_instructor" value="Editar">
         </form>
       </td>
     </tr>
@@ -175,7 +175,8 @@ if (isset($_POST['r']) == 'info_curso' && isset($_POST['op']) == 'set_instructor
 
 $template .= '<br><br><br>
 <h2>Participantes</h2>
-<table class="bordez">
+<div class="maxw">
+<table class="max">
   <tr>
     <td>Nombre</td>
     <td>Apellido</td>
@@ -199,7 +200,7 @@ $template .= '<br><br><br>
           <input type="hidden" name="r" value="info_curso">
           <input type="hidden" name="op" value="editp">
           <input type="hidden" name="idp" value="'. $key['cedula'] .'">
-          <input type="submit" name="edit_participante" value="Editar">
+          <input id="button" type="submit" name="edit_participante" value="Editar">
         </form>
       </td>
       <td>
@@ -208,7 +209,7 @@ $template .= '<br><br><br>
           <input type="hidden" name="r" value="info_curso">
           <input type="hidden" name="op" value="deletep">
           <input type="hidden" name="idp" value="'. $key['cp_id'] .'">
-          <input type="submit" name="delete_participante" value="Eliminar">
+          <input id="button" type="submit" name="delete_participante" value="Eliminar">
         </form>
       </td>
     </tr>';
@@ -225,11 +226,12 @@ $template .= '<br><br><br>
       <input type="hidden" name="r" value="info_curso">
       <input type="hidden" name="op" value="setp">
       <input type="hidden" name="c" value="'. $_GET['c'] .'">
-      <input type="submit" name="envio_participante" value="añadir">
+      <input id="button" type="submit" name="envio_participante" value="añadir">
     </td>
   </form>
   </tr>
-</table>';
+</table>
+</div>';
 
 if (isset($_POST['r']) == 'info_curso' && isset($_POST['op']) == 'editp' && isset($_POST['edit_participante'])) {
   header('Location: ./?r=participante&c=' .$_POST['c'].'&ci='.$_POST['idp']);

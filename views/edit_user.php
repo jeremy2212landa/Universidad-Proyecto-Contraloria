@@ -3,7 +3,9 @@
   $get_user = $users->read($_POST['u']);
 
   foreach ($get_user as $key) {
-    $template = '<div class="" align="center">
+
+    $template = '
+    <div class="" align="center">
       <h2>Anadir Usuario</h2>
       <form method="post">
         <input type="hidden" name="r" value="edit_user">
@@ -19,12 +21,14 @@
         <input type="submit" name="Agregar" value="Agregar">
       </form>
     </div>';
+
   }
 
 printf($template);
 
 
-if ($_POST['r'] == 'edit_user' && $_POST['op'] == 'set') {
+if ($_POST['r'] == 'edit_user' && isset($_POST['op']) == 'set') {
+
   $user_data = array(
     'user_id' => $_POST['id'],
     'user_name' => $_POST['username'],
@@ -36,5 +40,6 @@ if ($_POST['r'] == 'edit_user' && $_POST['op'] == 'set') {
   $usersadd = $users->update($user_data);
 
   header('Location: ./?r=users');
+  
 }
 ?>

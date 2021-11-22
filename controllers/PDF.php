@@ -21,6 +21,9 @@ function Header()
 // Page footer
 function Footer()
 {
+  $this->SetY(-35);
+  $this->Cell(55);
+  $this->Cell(80,10,'Dir. Talento Humano','T',0,'C');
     // Position at 1.5 cm from bottom
     $this->SetY(-15);
     // Arial italic 8

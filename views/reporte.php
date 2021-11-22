@@ -27,6 +27,9 @@ if ( isset($_POST['check2']) ) {
 
     }
     $pdf->Cell(30,25,utf8_decode('Horas Academicas: ').$get_cp[0]['curso_horas']);
+    $pdf->SetY(-35);
+    $pdf->Cell(55);
+    $pdf->Cell(80,10,'Dir. Talento Humano','T',0,'C');
     $pdf->Output();
     ob_end_flush();
 

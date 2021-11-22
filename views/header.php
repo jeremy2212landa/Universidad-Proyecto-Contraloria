@@ -45,9 +45,10 @@ print '
 
     print '<!-- Inicio de la Barra puta desaparece de navegacion -->
     <nav class="nav-unlog">
-        <div>
+			<h3>Sistema de Gestion de cursos CEBM</h3>
+        <!--<div>
 					<img class="icon" src="./public/img/CEBM.png">
-				</div>
+				</div>-->
     </nav>
     <!-- Fin de la Barra de navegacion -->';
 

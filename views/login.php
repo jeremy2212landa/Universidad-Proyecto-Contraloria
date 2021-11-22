@@ -1,6 +1,7 @@
 <?php
 $template = '
 <div class="log">
+	<img class="icon-log" src="./public/img/CEBM.png">
 	<form method="post">
 		<div>
 			<input type="text" name="loginuser" placeholder="Usuario" required>
@@ -18,7 +19,7 @@ if( isset($_GET['error']) ) {
 
 	$template .= '
 			<div class="err">
-				<p class="item  error">'. $_GET['error'] .'</p>
+				<p class="item-error">'. $_GET['error'] .'</p>
 			</div>';
 
 }

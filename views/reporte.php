@@ -4,13 +4,16 @@ if ( isset($_POST['check2']) ) {
   if ($_POST['op'] == 'cu') {
     $cp = new CP_Model();
     $get_cp = $cp->read($_POST['rep']);
+    $i = new CI_Model();
+    $ci = $i->read($_POST['rep']);
     ob_start();
     // Instanciation of inherited class
     $pdf = new PDF('Portrait');
     $pdf->AliasNbPages();
     $pdf->AddPage();
     $pdf->SetFont('Arial','',12);
-    $pdf->Cell(100,10,$get_cp[0]['curso_name'],0,1);
+    $pdf->Cell(100,10,'Reporte del curso: '.$get_cp[0]['curso_name'],0,1);
+    $pdf->Cell(100,10,'Instructor: '.$ci[0]['apellido'].' '.$ci[0]['nombre'],0,1);
     $pdf->Cell(25,10,'cedula',1);
     $pdf->Cell(60,10,'Apellidos y Nombres',1);
     $pdf->Cell(60,10,'Correo',1);
@@ -18,11 +21,12 @@ if ( isset($_POST['check2']) ) {
     foreach ($get_cp as $key) {
 
       $pdf->Cell(25,10,$key['cedula'],0);
-      $pdf->Cell(60,10,$key['apellido'].' '.$key['nombre'],0);
-      $pdf->Cell(60,10,$key['correo'],0);
-      $pdf->Cell(45,10,$key['direccion'],0,1);
+      $pdf->Cell(60,10,utf8_decode($key['apellido']).' '.utf8_decode($key['nombre']),0);
+      $pdf->Cell(60,10,utf8_decode($key['correo']),0);
+      $pdf->Cell(45,10,utf8_decode($key['direccion']),0,1);
 
     }
+    $pdf->Cell(30,25,utf8_decode('Horas Academicas: ').$get_cp[0]['curso_horas']);
     $pdf->Output();
     ob_end_flush();
 

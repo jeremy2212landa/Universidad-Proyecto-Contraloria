@@ -13,7 +13,7 @@ function Header()
     // Move to the right
     $this->Cell(68);
     // Title
-    $this->Cell(50,10,'Reporte de curso',1,0,'C');
+    $this->Cell(50,10,'Reporte',1,0,'C');
     // Line break
     $this->Ln(20);
 }

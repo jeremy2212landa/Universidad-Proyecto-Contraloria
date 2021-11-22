@@ -13,14 +13,14 @@ class CI_Model extends Model {
 
 	public function read( $ci_id = '' ) {
 		$this->query = ($ci_id != '')
-    ?"SELECT c.curso_id, c.curso_name, c.curso_fecha, i.nombre, i.apellido, i.cedula, i.correo, i.instituto, i.cargo, ci.ci_id
+    ?"SELECT c.curso_id, c.curso_name, c.curso_contralor, c.curso_fecha, c.curso_horas, i.nombre, i.apellido, i.cedula, i.correo, i.instituto, i.cargo, ci.ci_id
 		FROM cursos AS c
 		INNER JOIN curso_instructor AS ci ON c.curso_id = ci.ci_curso
 		INNER JOIN instructores as i ON ci.ci_instructor = i.cedula
     WHERE c.curso_id = $ci_id
 		ORDER BY i.apellido"
 
-    :"SELECT c.curso_id, c.curso_name, c.curso_fecha, i.nombre, i.apellido, i.cedula, i.correo, i.instituto, i.cargo, ci.ci_id
+    :"SELECT c.curso_id, c.curso_name, c.curso_contralor, c.curso_fecha, c.curso_horas, i.nombre, i.apellido, i.cedula, i.correo, i.instituto, i.cargo, ci.ci_id
 		FROM cursos AS c
 		INNER JOIN curso_instructor AS ci ON c.curso_id = ci.ci_curso
 		INNER JOIN instructores as i ON ci.ci_instructor = i.cedula";

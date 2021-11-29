@@ -6,9 +6,9 @@ $template = '
   <form method="post">
     <input type="hidden" name="r" value="add_user">
     <input type="hidden" name="op" value="set">
-    Username: <input type="text" name="username" placeholder="Usuario" value="" required><br>
-    Email: <input type="text" name="email" placeholder="Correo" value="" required><br>
-    password: <input type="password" placeholder="Contraseña" name="pass" value="" required><br>
+    Username: <input type="text" maxlength="30" name="username" placeholder="Usuario" value="" required><br>
+    Email: <input type="email" maxlength="30" name="email" placeholder="Correo" value="" required><br>
+    password: <input type="password" maxlength="32" placeholder="Contraseña" name="pass" value="" required><br>
     Role <select name="role">
       <option value="Admin">Admin</option>
       <option value="User">User</option>

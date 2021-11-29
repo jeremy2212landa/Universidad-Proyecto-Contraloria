@@ -4,10 +4,10 @@ $template = '
 	<img class="icon-log" src="./public/img/CEBM.png">
 	<form method="post">
 		<div>
-			<input type="text" name="loginuser" placeholder="Usuario" required>
+			<input type="text" maxlength="30" name="loginuser" placeholder="Usuario" required>
 		</div>
 		<div>
-			<input type="password" name="loginpass" placeholder="Contraseña" required>
+			<input type="password" maxlength="32" name="loginpass" placeholder="Contraseña" required>
 		</div>
 		<div>
 			<input type="submit" class="button" value="Aceptar">

@@ -34,8 +34,8 @@ print '
 			</div>
 
 			<div>
-				<a href="./?r=users">Users</a>
-				<a href="./?r=salir">Salir</a>
+				<a class="btn-header" href="./?r=users">Users</a>
+				<a class="btn-header" href="./?r=salir">Salir</a>
 			</div>
 
     </nav>
@@ -45,7 +45,7 @@ print '
 
     print '<!-- Inicio de la Barra puta desaparece de navegacion -->
     <nav class="nav-unlog">
-			<h3>Sistema de Gestion de cursos CEBM</h3>
+			<h3>Sistema de Gestion de Cursos CEBM</h3>
         <!--<div>
 					<img class="icon" src="./public/img/CEBM.png">
 				</div>-->

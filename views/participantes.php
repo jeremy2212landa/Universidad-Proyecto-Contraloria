@@ -14,10 +14,10 @@ $participantes_read = $participante->read($_GET['ci']);
       </tr>
       <tr>
       <form method="post">
-        <td><input type="text" name="nombre_p" value="'. $participantes_read[0]['nombre'] .'" required></td>
-        <td><input type="text" name="apellido_p" value="'. $participantes_read[0]['apellido'] .'" required></td>
-        <td><input type="text" name="correo_p" value="'. $participantes_read[0]['correo'] .'" required></td>
-        <td><input type="text" name="direccion_p" value="'. $participantes_read[0]['direccion'] .'" required></td>
+        <td><input type="text" maxlength="30" name="nombre_p" value="'. $participantes_read[0]['nombre'] .'" required></td>
+        <td><input type="text" maxlength="30" name="apellido_p" value="'. $participantes_read[0]['apellido'] .'" required></td>
+        <td><input type="email" maxlength="30" name="correo_p" value="'. $participantes_read[0]['correo'] .'" required></td>
+        <td><input type="text" maxlength="30" name="direccion_p" value="'. $participantes_read[0]['direccion'] .'" required></td>
         <td>
           <input type="hidden" name="cedula_p" value="'. $_GET['ci'] .'">
           <input type="hidden" name="r" value="participantes">
@@ -31,7 +31,7 @@ $participantes_read = $participante->read($_GET['ci']);
     </form>
   </div>';
 
-  if ($_POST['r'] == 'participantes' && $_POST['op'] == 'updatep') {
+  if (isset($_POST['r']) == 'participantes' && isset($_POST['op']) == 'updatep') {
 
     $pp = array(
       'nombre_participante' => $_POST['nombre_p'],

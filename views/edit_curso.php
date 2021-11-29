@@ -8,11 +8,11 @@ $cursos_read = $cursos->read($_POST['c']);
   <input type="hidden" name="c" value="'. $_POST['c'] .'">
   <input type="hidden" name="r" value="edit_curso">
   <input type="hidden" name="op" value="update">
-  *Nombre Curso:<input type="text" name="name_curso" value="'. $cursos_read[0]['curso_name'] .'"><br>
+  *Nombre Curso:<input type="text" maxlength="80" name="name_curso" value="'. $cursos_read[0]['curso_name'] .'"><br>
   Descripcion Curso:<textarea name="curso_description"  rows="8" cols="80">'. $cursos_read[0]['curso_description'] .'</textarea><br>
-  Contralor:<input type="text" name="contralor" value="'. $cursos_read[0]['curso_contralor'] .'"><br>
-  Fecha:<input type="datetime" name="fechia" value="'. $cursos_read[0]['curso_fecha'] .'"><br>
-  Horas:<input type="text" name="curso_hours" value="'. $cursos_read[0]['curso_horas'] .'"><br>
+  Contralor:<input type="text" maxlength="30" name="contralor" value="'. $cursos_read[0]['curso_contralor'] .'"><br>
+  Fecha:<input type="datetime" maxlength="10" name="fechia" value="'. $cursos_read[0]['curso_fecha'] .'"><br>
+  Horas:<input type="text" maxlength="3" name="curso_hours" value="'. $cursos_read[0]['curso_horas'] .'"><br>
   <input type="submit" name="save" value="Guardar">
 </form>
 </div>';

@@ -11,9 +11,9 @@
         <input type="hidden" name="r" value="edit_user">
         <input type="hidden" name="op" value="set">
         <input type="hidden" name="id" value="' . $key['user_id'] . '">
-        Username: <input type="text" name="username" placeholder="username" value="' . $key['user_name'] . '" required><br>
-        Email: <input type="text" name="email" placeholder="email" value="' . $key['user_email'] . '" required><br>
-        password: <input type="password" placeholder="pass" name="pass" value="' . $key['user_pass'] . '" required><br>
+        Username: <input type="text" maxlength="30" name="username" placeholder="username" value="' . $key['user_name'] . '" required><br>
+        Email: <input type="email" maxlength="30" name="email" placeholder="email" value="' . $key['user_email'] . '" required><br>
+        password: <input type="password" maxlength="32" placeholder="pass" name="pass" value="' . $key['user_pass'] . '" required><br>
         Role <select name="role" value="' . $key['role'] . '">
           <option value="Admin">Admin</option>
           <option value="User">User</option>

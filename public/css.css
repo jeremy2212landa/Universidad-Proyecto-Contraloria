@@ -1,150 +1,167 @@
 body {
-  background: url(./img/fd.jpg);
+    background: url(./img/fd.jpg);
     background-size: cover;
     background-attachment: fixed;
     font-family: Roboto;
 }
 
-table, th, td {
-  border: 1px solid black;
+table,
+th,
+td {
+    border: 1px solid black;
 }
 
 table {
-  border-collapse: inherit;
-  margin: 15px 0px;
-  border-radius: 6px;
-  background-color: rgba(255, 255, 255, .7);
+    border-collapse: inherit;
+    margin: 15px 0px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, .7);
 }
 
 td {
-  text-align: center;
-  /* background-color: rgba(255,255,255,.0); */
+    text-align: center;
+    /* background-color: rgba(255,255,255,.0); */
 }
 
 .nav-home {
-  background-color:rgba(0,0,0,.7);
-  padding: 5px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background-color: rgba(0, 0, 0, .7);
+    padding: 5px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav-unlog {
-  background-color:rgba(0,0,0,.7);
-  display: flex;
-  justify-content: center;
-  padding: 5px;
-  color: white;
+    background-color: rgba(0, 0, 0, .7);
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    color: white;
 }
 
 .icon {
-  display: flex;
-  align-items: center;
-  width: 46px;
-  height: 46px;
+    display: flex;
+    align-items: center;
+    width: 46px;
+    height: 46px;
 }
 
 .icon-log {
-  width: 80px;
-  height: 80px;
-  margin: 15px;
+    width: 80px;
+    height: 80px;
+    margin: 15px;
 }
 
 .bdy {
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  margin: auto;
-  width: 88%;
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    width: 88%;
 }
 
 .log {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  margin: 20px auto;
-  width: 400px;
-  height: 420px;
-  border-radius:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 20px auto;
+    width: 400px;
+    height: 420px;
+    border-radius: 20px;
 }
 
-.log input, .log button {
-  display: flex;
-  justify-content: center;
-  margin: 5px auto;
+.log input,
+.log button {
+    display: flex;
+    justify-content: center;
+    margin: 5px auto;
 }
 
 .container {
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 .tb-home {
-  width: 150vh;
+    width: 150vh;
 }
 
+a {
+    color: #000;
+    text-decoration: none;
+    background-color: #FFF;
+    border-radius: 5px;
+}
 
-a{
-  color: #000;
-  text-decoration: none;
-  background-color: #FFF;
-  border-radius: 3px;
+.btn-header {
+    padding: 8px;
+    font-size: 15px;
+    transition: all .3s ease;
+}
+
+.btn-header:hover {
+    background-color: #ff851b;
+    padding: 10px;
 }
 
 .btn-n {
-  outline: none;
+    outline: none;
     display: block;
     padding: 10px 15px;
     margin: 0 0 20px 0;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     color: #fff;
     border: none;
     border-radius: 2px;
     border-bottom: 4px solid #ff851b;
     box-sizing: border-box;
     font-size: 14px;
-    font-weight:normal;
+    font-weight: normal;
     transition: all .5s ease;
-  background-color: #ff851b;
+    background-color: #ff851b;
 }
 
-.btn-n:hover{
+.btn-n:hover {
     background: rgba(0, 117, 217, 0.7);
 }
 
 #button {
-  background: #ff851b;
-  outline: none;
-  border-radius: 10px;
-  border: 3px solid #ff851b;
-  margin: 2px;
-  transition: all .5s ease;
+    background: #ff851b;
+    outline: none;
+    border-radius: 10px;
+    border: 3px solid #ff851b;
+    margin: 2px;
+    transition: all .5s ease;
 }
-#button:hover{
+
+#button:hover {
     background: rgba(0, 117, 217, 0.7);
     border: 3px solid rgba(0, 117, 217, 0.7);
 }
 
-  .footers {
+.footers {
     height: 100px;
     text-align: center;
     margin-top: 15px;
-    background-color: rgba(0,0,0,.7);
-  }
-  .footers h4, .footers h5{
-        color: rgb(255,255,255);
-  }
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.footers h4,
+.footers h5 {
+    color: rgb(255, 255, 255);
+}
 
 .item-error {
-  color: red;
-  margin: 15px;
+    color: red;
+    margin: 15px;
 }
+
 
 /*
 

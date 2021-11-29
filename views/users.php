@@ -39,12 +39,19 @@ foreach ($userscount as $key) {
 }
 
 $template .= '
-</table>
-<form method="post">
-    <input type="hidden" name="r" value="add_user">
-    <input class="btn-n" type="submit" name="agregar" value="agregar">
-</form>
-</div>';
+</table>';
+
+if ($_SESSION['role'] == 'Admin'){
+
+  $template .= '<form method="post">
+  <input type="hidden" name="r" value="add_user">
+  <input class="btn-n" type="submit" name="agregar" value="agregar">
+</form>';
+
+}
+
+
+$template .= '</div>';
 
 printf ($template);
 ?>

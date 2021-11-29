@@ -31,7 +31,7 @@ if ( isset($_POST['check2']) ) {
     $pdf->Cell(55,10,utf8_decode('Horas Academicas: ').$get_cp[0]['curso_horas'],'T',1);
     $pdf->Cell(60,10,'Participantes totales: '.$par_totales,0,1);
     $pdf->SetY(-35);
-    $pdf->Output();
+    $pdf->Output('D', utf8_decode($get_cp[0]['curso_name']) . '.pdf');
     ob_end_flush();
 
 
@@ -71,7 +71,7 @@ if ( isset($_POST['check2']) ) {
     }
     $pdf->Cell(172.5,10,'Horas totales:',0,0,'R');
     $pdf->Cell(25,10,$horas_totales,'T',1,'C');
-    $pdf->Output();
+    $pdf->Output('D', utf8_decode($p_data[0]['nombre']) . ' ' . utf8_decode($p_data[0]['apellido']) .' C.I: '.$p_data[0]['cedula'] . '.pdf');
     ob_end_flush();
 
   }elseif ($_POST['op'] == 'ins') {
@@ -107,7 +107,7 @@ if ( isset($_POST['check2']) ) {
       }
     $pdf->Cell(172.5,10,'Horas totales:',0,0,'R');
     $pdf->Cell(25,10,$horas_totales,'T',1,'C');
-    $pdf->Output();
+    $pdf->Output('D', utf8_decode($i_data[0]['nombre']) . ' ' . utf8_decode($i_data[0]['apellido']) .' C.I: '. $i_data[0]['cedula'] . '.pdf');
     ob_end_flush();
     }
   }

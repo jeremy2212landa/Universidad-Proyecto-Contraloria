@@ -17,7 +17,20 @@ $participantes_read = $participante->read($_GET['ci']);
         <td><input type="text" maxlength="30" name="nombre_p" value="'. $participantes_read[0]['nombre'] .'" required></td>
         <td><input type="text" maxlength="30" name="apellido_p" value="'. $participantes_read[0]['apellido'] .'" required></td>
         <td><input type="email" maxlength="30" name="correo_p" value="'. $participantes_read[0]['correo'] .'" required></td>
-        <td><input type="text" maxlength="30" name="direccion_p" value="'. $participantes_read[0]['direccion'] .'" required></td>
+        <td>
+        <select name="direccion_p" required>
+          <option value="">Direcciones</option>
+          <option value="Administración y Finanzas">DAF</option>
+          <option value="Comunicación y Relaciones Públicas">DCRP</option>
+          <option value="Consultoria Juridica">DCJ</option>
+          <option value="Planificación Presupuesto y Control de Gestión">DPPCG</option>
+          <option value="Talento Humano">DTH</option>
+          <option value="Tecnología de Información y Comunicaciones">DTIC</option>
+          <option value="Control de la Administración Central y Otro Poder">DCACOP</option>
+          <option value="Control de la Administración Descentralizada">DCAD</option>
+          <option value="Determinación de Responsabilidad Administrativa">DDRA</option>
+        </select>
+        </td>
         <td>
           <input type="hidden" name="cedula_p" value="'. $_GET['ci'] .'">
           <input type="hidden" name="r" value="participantes">

@@ -4,11 +4,11 @@ $template = '<div align="center">
 <form method="post">
   <input type="hidden" name="r" value="add_curso">
   <input type="hidden" name="op" value="set">
-  *Nombre Curso:<input type="text" maxlength="80" name="name_curso" value="" placeholder="Curso"><br>
-  Descripcion Curso:<textarea name="curso_description" rows="8" cols="80" placeholder="Descripcion"></textarea><br>
-  Contralor:<input type="text" maxlength="30" name="contralor" value="" placeholder="Contralor"><br>
-  Fecha:<input type="datetime" maxlength="10" name="fechia" value="" placeholder="aaaa-mm-dd"><br>
-  Horas Academicas:<input type="number" maxlength="3" name="curso_hours" value="" placeholder="Horas Academicas"><br>
+  *Nombre Curso:<input type="text" maxlength="80" name="name_curso" value="" placeholder="Curso" required><br>
+  Descripcion Curso:<textarea name="curso_description" rows="8" cols="80" placeholder="Descripcion" required></textarea><br>
+  Contralor:<input type="text" maxlength="30" name="contralor" value="" placeholder="Contralor" required><br>
+  Fecha:<input type="date" maxlength="10" name="fechia" value="" required><br>
+  Horas Academicas:<input type="number" maxlength="3" name="curso_hours" value="" placeholder="Horas Academicas" required><br>
   <input type="submit" name="save" value="Guardar">
 </form>
 </div>';

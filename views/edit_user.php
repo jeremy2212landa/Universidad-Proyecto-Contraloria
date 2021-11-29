@@ -1,10 +1,14 @@
 <?php
   $users = new UsersModel();
   $get_user = $users->read($_POST['u']);
+  $template = '';
+  
 
-  foreach ($get_user as $key) {
+    if ($_SESSION['role'] == 'Admin' || $_SESSION['user_id'] == $_POST['u']){
 
-    $template = '
+      foreach ($get_user as $key) {
+
+      $template .= '
     <div class="" align="center">
       <h2>Anadir Usuario</h2>
       <form method="post">
@@ -13,16 +17,28 @@
         <input type="hidden" name="id" value="' . $key['user_id'] . '">
         Username: <input type="text" maxlength="30" name="username" placeholder="username" value="' . $key['user_name'] . '" required><br>
         Email: <input type="email" maxlength="30" name="email" placeholder="email" value="' . $key['user_email'] . '" required><br>
-        password: <input type="password" maxlength="32" placeholder="pass" name="pass" value="' . $key['user_pass'] . '" required><br>
-        Role <select name="role" value="' . $key['role'] . '">
+        password: <input type="password" maxlength="32" placeholder="pass" name="pass" value="" required><br>';
+
+        if ($_SESSION['role'] == 'Admin'){
+          $template .= 'Role <select name="role" value="' . $key['role'] . '">
           <option value="Admin">Admin</option>
           <option value="User">User</option>
-        </select><br>
-        <input type="submit" name="Agregar" value="Agregar">
+        </select><br>';
+        }else {
+          $template .= '<input type="hidden" name="role" value="' . $key['role'] . '">';
+        }
+        
+        $template .= '<input type="submit" name="Agregar" value="Agregar">
       </form>
     </div>';
 
-  }
+      }
+    } else {
+      require_once('./views/error401.php');
+    }
+    
+
+
 
 printf($template);
 

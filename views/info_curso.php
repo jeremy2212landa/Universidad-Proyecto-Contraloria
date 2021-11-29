@@ -7,15 +7,8 @@ $ci = new CI_Model();
 $cursos_datos = $cursos->read($_GET['c']);
 $cp_datos = $cp->read($_GET['c']);
 $ci_datos = $ci->read($_GET['c']);
-//var_dump ($ci_datos[0]['ci_id']);
-// var_dump ($cp_datos);
-// $participante_dat = array(
-//   'nombre_participante' => $_POST['nombre_p'],
-//   'apellido_participante' => $_POST['apellido_p'],
-//   'cedula_participante' => $_POST['cedula_p'],
-//   'correo_participante' => $_POST['correo_p'],
-//   'direccion_participante' => $_POST['direccion_p']
-// );
+
+
   $template = '<div align="center">
   <h2>Curso</h2>
   <table class="bordez">
@@ -28,13 +21,19 @@ $ci_datos = $ci->read($_GET['c']);
           <input type="hidden" name="r" value="edit_curso">
           <input type="hidden" name="c" value="' . $cursos_datos[0]['curso_id'] . '">
           <input id="button" type="submit" name="envio" value="Editar">
-        </form>
-        <form method="post">
-          <input type="hidden" name="r" value="delete_curso">
-          <input type="hidden" name="c" value="' . $cursos_datos[0]['curso_id'] . '">
-          <input id="button" type="submit" name="delete" value="Eliminar">
-        </form>
-      </td>
+        </form>';
+
+        if ($_SESSION['role'] == 'Admin'){
+          $template .= '
+          <form method="post">
+            <input type="hidden" name="r" value="delete_curso">
+            <input type="hidden" name="c" value="' . $cursos_datos[0]['curso_id'] . '">
+            <input id="button" type="submit" name="delete" value="Eliminar">
+          </form>';
+        }
+        
+
+      $template .= '</td>
     </tr>
     <tr>
       <td colspan="4">' . $cursos_datos[0]['curso_description'] . '</td>
@@ -61,12 +60,12 @@ if (empty($ci_datos)) {
   $template .= '
     <tr>
       <form method="post">
-        <td><input type="text" maxlength="30" name="nombre_i" value="" placeholder="Nombre"></td>
-        <td><input type="text" maxlength="30" name="apellido_i" value="" placeholder="apellido"></td>
-        <td><input type="number" maxlength="9" name="cedula_i" value="" placeholder="cedula"></td>
-        <td><input type="email" maxlength="30" name="correo_i" value="" placeholder="correo"></td>
-        <td><input type="text" maxlength="30" name="instituto_i" value="" placeholder="Instituto"></td>
-        <td><input type="text" maxlength="30" name="cargo_i" value="" placeholder="cargo"></td>
+        <td><input type="text" maxlength="30" name="nombre_i" value="" placeholder="Nombre" required></td>
+        <td><input type="text" maxlength="30" name="apellido_i" value="" placeholder="apellido" required></td>
+        <td><input type="number" maxlength="9" name="cedula_i" value="" placeholder="cedula" required></td>
+        <td><input type="email" maxlength="30" name="correo_i" value="" placeholder="correo" required></td>
+        <td><input type="text" maxlength="30" name="instituto_i" value="" placeholder="Instituto" required></td>
+        <td><input type="text" maxlength="30" name="cargo_i" value="" placeholder="cargo" required></td>
         <td>
           <input type="hidden" name="op" value="set_instructor">
           <input type="hidden" name="r" value="info_curso">
@@ -80,12 +79,12 @@ if (empty($ci_datos)) {
   $template .= '
   <tr>
   <form method="post">
-    <td><input type="text" maxlength="30" name="nombre_i" value="'. $ci_datos[0]['nombre'] .'" placeholder="Nombre"></td>
-    <td><input type="text" maxlength="30" name="apellido_i" value="'. $ci_datos[0]['apellido'] .'" placeholder="apellido"></td>
-    <td><input type="number" maxlength="9" name="cedula_i" value="'. $ci_datos[0]['cedula'] .'" placeholder="cedula"></td>
-    <td><input type="email" maxlength="30" name="correo_i" value="'. $ci_datos[0]['correo'] .'" placeholder="correo"></td>
-    <td><input type="text" maxlength="30" name="instituto_i" value="'. $ci_datos[0]['instituto'] .'" placeholder="Instituto"></td>
-    <td><input type="text" maxlength="30" name="cargo_i" value="'. $ci_datos[0]['cargo'] .'" placeholder="cargo"></td>
+    <td><input type="text" maxlength="30" name="nombre_i" value="'. $ci_datos[0]['nombre'] .'" placeholder="Nombre" required></td>
+    <td><input type="text" maxlength="30" name="apellido_i" value="'. $ci_datos[0]['apellido'] .'" placeholder="apellido" required></td>
+    <td><input type="number" maxlength="9" name="cedula_i" value="'. $ci_datos[0]['cedula'] .'" placeholder="cedula" required></td>
+    <td><input type="email" maxlength="30" name="correo_i" value="'. $ci_datos[0]['correo'] .'" placeholder="correo" required></td>
+    <td><input type="text" maxlength="30" name="instituto_i" value="'. $ci_datos[0]['instituto'] .'" placeholder="Instituto" required></td>
+    <td><input type="text" maxlength="30" name="cargo_i" value="'. $ci_datos[0]['cargo'] .'" placeholder="cargo" required></td>
     <td>
       <input type="hidden" name="op" value="set_instructor">
       <input type="hidden" name="r" value="info_curso">
@@ -221,7 +220,20 @@ $template .= '<br><br><br>
     <td><input type="text" maxlength="30" name="apellido_p" value="" placeholder="Apellido" required></td>
     <td><input type="number" maxlength="9" name="cedula_p" value="" placeholder="Cedula" required></td>
     <td><input type="email" maxlength="30" name="correo_p" value="" placeholder="Correo" required></td>
-    <td><input type="text" maxlength="30" name="direccion_p" value="" placeholder="Direccion" required></td>
+    <td>
+    <select name="direccion_p" required>
+      <option value="">Direcciones</option>
+      <option value="Administración y Finanzas">DAF</option>
+      <option value="Comunicación y Relaciones Públicas">DCRP</option>
+      <option value="Consultoria Juridica">DCJ</option>
+      <option value="Planificación Presupuesto y Control de Gestión">DPPCG</option>
+      <option value="Talento Humano">DTH</option>
+      <option value="Tecnología de Información y Comunicaciones">DTIC</option>
+      <option value="Control de la Administración Central y Otro Poder">DCACOP</option>
+      <option value="Control de la Administración Descentralizada">DCAD</option>
+      <option value="Determinación de Responsabilidad Administrativa">DDRA</option>
+    </select>
+    </td>
     <td>
       <input type="hidden" name="r" value="info_curso">
       <input type="hidden" name="op" value="setp">

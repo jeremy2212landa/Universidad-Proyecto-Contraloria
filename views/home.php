@@ -19,15 +19,22 @@ $template = '
       <tr>
         <td>' . $key['curso_id'] . '</td>
         <td>' . $key['curso_name'] . '</td>
-        <td>Horas: ' . $key['curso_horas'] .'</td>
-        <td>
-          </form>
-          <form method="post">
-            <input type="hidden" name="r" value="delete_curso">
-            <input type="hidden" name="c" value="' . $key['curso_id'] . '">
-            <input id="button" type="submit" name="delete" value="Eliminar">
-          </form>
-        </td>
+        <td>Horas: ' . $key['curso_horas'] .'</td>';
+        
+        if ($_SESSION['role'] == 'Admin'){
+
+          $template .= '
+          <td>
+            <form method="post">
+              <input type="hidden" name="r" value="delete_curso">
+              <input type="hidden" name="c" value="' . $key['curso_id'] . '">
+              <input id="button" type="submit" name="delete" value="Eliminar">
+            </form>
+          </td>';
+
+        }
+          
+        $template .= '
       </tr>
       <tr>
         <td colspan="4">' . $key['curso_description'] . '</td>

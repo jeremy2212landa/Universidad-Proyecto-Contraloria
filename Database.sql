@@ -72,9 +72,9 @@ INSERT INTO users (user_name, user_email, user_pass, role) VALUES
 #insertando datos para cursos
 
 INSERT INTO cursos (curso_name, curso_description, curso_contralor, curso_fecha, curso_horas) values
-    ('curso de prueba1', 'probando la aplicacion con mvc para ver que tan bien o mal está', 'Jeremy Landa', '2021-09-27', 5),
-    ('Curso de analisis', 'Analizando el estado actual de mi aplicacion web', 'Daniel Muñoz', '2021-09-27', 3),
-    ('Curso Test', 'Testeando lo que se puede hacer aca en esta vaina', 'Jeremy Landa', '2021-09-27', 12);
+    ('curso de prueba1', 'probando la aplicacion con mvc para ver que tan bien o mal está', 'Jeremy Landa', '2021-11-24', 5),
+    ('Curso de analisis', 'Analizando el estado actual de mi aplicacion web', 'Daniel Muñoz', '2021-11-24', 3),
+    ('Curso Test', 'Testeando lo que se puede hacer aca en esta vaina', 'Jeremy Landa', '2021-11-24', 12);
 
 
 

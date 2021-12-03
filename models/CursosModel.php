@@ -45,9 +45,13 @@ class CursosModel extends Model {
 		$this->set_query();
 	}
 
-	public function read_mes( $cursos_date = '' , $curso_date2 = '' ) {
-		$this->query = ($cursos_id != '')
-    ?"SELECT * FROM cursos WHERE curso_fecha BETWEEN = $cursos_date AND $curso_date2
+	public function read_mes( $cursos_date = '' ) {
+		$this->query = ($cursos_date != '')
+    ?"SELECT c.curso_id, c.curso_name, c.curso_contralor, c.curso_fecha, c.curso_horas, i.nombre, i.apellido, i.cedula
+	FROM cursos AS c
+	INNER JOIN curso_instructor AS ci ON c.curso_id = ci.ci_curso
+	INNER JOIN instructores as i ON ci.ci_instructor = i.cedula
+WHERE c.curso_fecha LIKE '$cursos_date%'
 		ORDER BY curso_fecha"
     :"SELECT * FROM cursos
 		 ORDER BY curso_fecha DESC";
@@ -64,6 +68,7 @@ class CursosModel extends Model {
 
 		return $data;
 	}
+
 }
 
 ?>

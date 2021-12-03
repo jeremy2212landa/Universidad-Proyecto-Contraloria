@@ -39,7 +39,7 @@ class CI_Model extends Model {
 	}
 
 	public function update( $ci_data = array() ) {
-		foreach ($cp_data as $key => $value) {
+		foreach ($ci_data as $key => $value) {
 			$$key = $value;
 		}
 

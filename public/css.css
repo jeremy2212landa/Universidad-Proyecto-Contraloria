@@ -163,7 +163,49 @@ a {
     margin: 15px;
 }
 
+.C404 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    color: white;
+    font-size: 22px;
+}
 
+.C401 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    color: white;
+    font-size: 22px;
+}
+
+.C401 img {
+    width: 200px;
+    height: 200px;
+    padding: 15px;
+}
+
+.C401 input {
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 10px;
+    border-style: none;
+    transition: all .3s ease;
+}
+
+.C401 input:hover {
+    background-color: #ff851b;
+    padding: 10px;
+}
+    
 /*
 
 
